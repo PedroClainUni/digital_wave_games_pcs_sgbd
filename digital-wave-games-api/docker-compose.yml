@@ -1,0 +1,14 @@
+version: '3'
+services:
+  db:
+    image: mysql:latest
+    container_name: mysql_digital_wave_games
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: digital_wave_games
+      MYSQL_PASSWORD: root
+    volumes:
+      - /docker/data:/var/lib/mysql
+      - ./docker/bootstrap.sql:/docker-entrypoint-initdb.d/bootstrap.sql
+    ports:
+      - 3307:3306

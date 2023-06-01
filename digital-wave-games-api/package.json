@@ -1,0 +1,48 @@
+{
+  "name": "digital-wave-games-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.ts",
+  "scripts": {
+    "pm2": "pm2 start build/server.js --name \"digital-wave-games-api\" -f",
+    "start": "tsnd --transpile-only --ignore-watch node_modules src/server.ts",
+    "serve": "node build/server.ts",
+    "start2": "npm run build && npm run serve",
+    "build": "npm run build-ts",
+    "watch": "concurrently -k -p \"[{name}]\" -n \"TypeScript,Node\" -c \"yellow.bold,cyan.bold,green.bold\" \"npm run watch-ts\" \"npm run watch-node\"",
+    "watch-node": "nodemon -r dotenv/config build/server.js",
+    "build-ts": "tsc",
+    "watch-ts": "tsc -w",
+    "test": "newman run ./tests/api-tests.postman.json -e ./tests/env-api-tests.postman.json"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@types/crypto-js": "^4.0.2",
+    "cors": "^2.8.5",
+    "crypto-js": "^4.1.1",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "express-jwt": "^6.1.0",
+    "jsonwebtoken": "^8.5.1",
+    "knex": "^0.95.14",
+    "knex-paginate": "^3.0.0",
+    "lodash": "^4.17.21",
+    "mongo-to-knex": "^0.5.0",
+    "mongodb": "^5.5.0",
+    "mysql": "^2.18.1",
+    "nodemailer": "^6.7.2",
+    "winston": "^3.3.3",
+    "winston-daily-rotate-file": "^4.5.5"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.12",
+    "@types/express": "^4.17.13",
+    "@types/jsonwebtoken": "^8.5.6",
+    "@types/lodash": "^4.14.178",
+    "@types/node": "^16.11.11",
+    "ts-node-dev": "^1.1.8",
+    "typescript": "^4.5.2",
+    "ws": "^8.3.0"
+  }
+}
