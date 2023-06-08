@@ -34,7 +34,7 @@ export const DB = {
   HOST: _.defaultTo(dotenv.config().parsed?.HOST, "127.0.0.1"),
   PORT: _.defaultTo(dotenv.config().parsed?.PORT, '3307'),
   DATABASE: _.defaultTo(dotenv.config().parsed?.DATABASE, "digital_wave_games"),
-};
+}; 
 
 export const EMAIL = {
   EMAIL_SERVICE: _.defaultTo(dotenv.config().parsed?.EMAIL_SERVICE, ""),
