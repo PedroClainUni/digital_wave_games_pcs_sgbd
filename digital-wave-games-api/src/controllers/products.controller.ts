@@ -45,7 +45,7 @@ export class ProductsController {
             platform,
         } = request.body;
         try {
-            const result = await this.productsService.save({
+            const result = await this.productsService.savem({
                 name: name,
                 price: price,
                 description: description,

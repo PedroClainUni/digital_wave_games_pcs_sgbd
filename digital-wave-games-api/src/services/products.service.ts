@@ -1,5 +1,5 @@
 import { IProductsRepository } from '../interfaces';
-import {ProductM, IProduct} from '../models/schemas/product.Schema'
+import { ProductM, IProduct } from '../models/schemas/product.Schema'
 import { PostProductDTO, Product, PutProductDTO, ResponseBody } from '../models';
 import logger from '../utils/logger';
 
@@ -27,36 +27,36 @@ export class ProductsService {
             logger.error(error);
             throw new Error(error);
         }
-        return { success: true, body: products}
+        return { success: true, body: products }
     }
 
-    async getAllM(): Promise<ResponseBody<typeof ProductM[]>>{
+    async getAllM(): Promise<ResponseBody<typeof ProductM[]>> {
         let products: typeof ProductM[] = []
 
         try {
             const response: typeof ProductM[] = await ProductM.find();
             products = response;
-        } catch (error:any) {
+        } catch (error: any) {
             logger.error(error);
             throw new Error(error);
         }
-        return{success:true, body:products}
+        return { success: true, body: products }
     }
 
     async getByIdM(id: string): Promise<ResponseBody<typeof ProductM>> {
         let product: typeof ProductM | null;
         try {
-          const response: typeof ProductM | null = await ProductM.findById(id);
-          product = response;
+            const response: typeof ProductM | null = await ProductM.findById(id);
+            product = response;
         } catch (error: any) {
-          logger.error(error);
-          throw new Error(error);
+            logger.error(error);
+            throw new Error(error);
         }
-        if(product === null){
+        if (product === null) {
             throw new Error('Produto não encontrado')
         }
         return { success: true, body: product };
-      }
+    }
 
     async getById(id: number): Promise<ResponseBody<Product>> {
         let response: ResponseBody<Product>;
@@ -103,6 +103,17 @@ export class ProductsService {
     //     }
 
     // }
+
+    async savem(dto: IProduct): Promise<ResponseBody<{ id: number }>> {
+        try {
+            const product = new ProductM(dto);
+            const response = await product.save();
+            return { success: true, body: { id: response.id } }
+        } catch (error:any) {
+            logger.error(error);
+            throw new Error(error);
+        }
+    }
 
     async save(dto: PostProductDTO): Promise<ResponseBody<{ id: number }>> {
         try {
