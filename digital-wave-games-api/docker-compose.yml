@@ -2,7 +2,7 @@ version: '3'
 services:
   db:
     image: mysql:latest
-    container_name: mysql_digital_wave_games
+    container_name: mysql_digital_wave_games_mysql
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: digital_wave_games
@@ -12,3 +12,17 @@ services:
       - ./docker/bootstrap.sql:/docker-entrypoint-initdb.d/bootstrap.sql
     ports:
       - 3307:3306
+  mongodb:
+    image: mongo:latest
+    container_name: mongodb_digital_wave_games_mongo
+    environment:
+      MONGO_INITDB_ROOT_DATABASE: digital_wave_games_mongodb
+    volumes:
+      - /docker/mongodb/data:/data/db
+      - ./docker/bootstrap.js:/docker-entrypoint-initdb.d/bootstrap.js
+    ports:
+      - 27017:27017
+  mongo-seed:
+    build: ./docker/mongo-seed
+    depends_on:
+      - mongodb

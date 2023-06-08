@@ -1,0 +1,23 @@
+[
+  {
+    "nome": "The Last of Us Part II",
+    "preco": 59.99,
+    "plataforma": "PlayStation 5",
+    "descricao": "A aclamada sequência do jogo de ação e aventura",
+    "estoque": 10
+  },
+  {
+    "nome": "Assassins Creed Valhalla",
+    "preco": 49.99,
+    "plataforma": "Xbox Series X",
+    "descricao": "Viva a épica saga dos vikings",
+    "estoque": 15
+  },
+  {
+    "nome": "Animal Crossing: New Horizons",
+    "preco": 39.99,
+    "plataforma": "Nintendo Switch",
+    "descricao": "Crie sua própria ilha paradisíaca",
+    "estoque": 20
+  }
+]
