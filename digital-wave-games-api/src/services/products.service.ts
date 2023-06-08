@@ -43,6 +43,21 @@ export class ProductsService {
         return{success:true, body:products}
     }
 
+    async getByIdM(id: string): Promise<ResponseBody<typeof ProductM>> {
+        let product: typeof ProductM | null;
+        try {
+          const response: typeof ProductM | null = await ProductM.findById(id);
+          product = response;
+        } catch (error: any) {
+          logger.error(error);
+          throw new Error(error);
+        }
+        if(product === null){
+            throw new Error('Produto não encontrado')
+        }
+        return { success: true, body: product };
+      }
+
     async getById(id: number): Promise<ResponseBody<Product>> {
         let response: ResponseBody<Product>;
 

@@ -1,5 +1,6 @@
 import { Response, Request } from 'express';
 import { ProductsService } from '../services';
+import { Types } from 'mongoose';
 
 export class ProductsController {
 
@@ -23,7 +24,8 @@ export class ProductsController {
 
     async getById(request: Request, response: Response): Promise<Response> {
         try {
-            const result = await this.productsService.getById(Number(request.params.id));
+            const id = request.params.id
+            const result = await this.productsService.getByIdM(id);
             return response.send(result);
 
         } catch (error: any) {
