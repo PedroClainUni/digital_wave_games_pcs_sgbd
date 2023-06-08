@@ -9,7 +9,7 @@ export class ProductsController {
 
         try {
 
-            const result = await this.productsService.getAll();
+            const result = await this.productsService.getAllM();
 
             return response.json(result);
 

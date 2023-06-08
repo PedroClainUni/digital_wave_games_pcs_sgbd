@@ -19,7 +19,6 @@ services:
       MONGO_INITDB_ROOT_DATABASE: digital_wave_games_mongodb
     volumes:
       - /docker/mongodb/data:/data/db
-      - ./docker/bootstrap.js:/docker-entrypoint-initdb.d/bootstrap.js
     ports:
       - 27017:27017
   mongo-seed:

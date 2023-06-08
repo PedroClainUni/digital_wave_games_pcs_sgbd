@@ -30,6 +30,7 @@
     "lodash": "^4.17.21",
     "mongo-to-knex": "^0.5.0",
     "mongodb": "^5.5.0",
+    "mongoose": "^7.2.2",
     "mysql": "^2.18.1",
     "nodemailer": "^6.7.2",
     "winston": "^3.3.3",

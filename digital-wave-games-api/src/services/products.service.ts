@@ -1,4 +1,5 @@
 import { IProductsRepository } from '../interfaces';
+import {ProductM, IProduct} from '../models/schemas/product.Schema'
 import { PostProductDTO, Product, PutProductDTO, ResponseBody } from '../models';
 import logger from '../utils/logger';
 
@@ -27,6 +28,19 @@ export class ProductsService {
             throw new Error(error);
         }
         return { success: true, body: products}
+    }
+
+    async getAllM(): Promise<ResponseBody<typeof ProductM[]>>{
+        let products: typeof ProductM[] = []
+
+        try {
+            const response: typeof ProductM[] = await ProductM.find();
+            products = response;
+        } catch (error:any) {
+            logger.error(error);
+            throw new Error(error);
+        }
+        return{success:true, body:products}
     }
 
     async getById(id: number): Promise<ResponseBody<Product>> {
