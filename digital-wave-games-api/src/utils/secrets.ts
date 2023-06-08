@@ -28,13 +28,21 @@ export const CLIENT_SECRET = _.defaultTo(
   ""
 );
 
-export const DB = {
+export const MYSQL = {
   USER: _.defaultTo(dotenv.config().parsed?.USER, "root"),
   PASSWORD: _.defaultTo(dotenv.config().parsed?.PW, "root"),
   HOST: _.defaultTo(dotenv.config().parsed?.HOST, "127.0.0.1"),
   PORT: _.defaultTo(dotenv.config().parsed?.PORT, '3307'),
-  DATABASE: _.defaultTo(dotenv.config().parsed?.DATABASE, "digital_wave_games"),
+  DATABASE: _.defaultTo(dotenv.config().parsed?.DATABASE, "digital_wave_games_mysql"),
 };
+
+export const MONGO = {
+  USER: _.defaultTo(dotenv.config().parsed?.USER, "root"),
+  PASSWORD: _.defaultTo(dotenv.config().parsed?.PW, "root"),
+  HOST: _.defaultTo(dotenv.config().parsed?.HOST, "127.0.0.1"),
+  PORT: _.defaultTo(dotenv.config().parsed?.PORT, '27017'),
+  DATABASE: _.defaultTo(dotenv.config().parsed?.DATABASE, "digital_wave_games_mongodb"),
+}
 
 export const EMAIL = {
   EMAIL_SERVICE: _.defaultTo(dotenv.config().parsed?.EMAIL_SERVICE, ""),
