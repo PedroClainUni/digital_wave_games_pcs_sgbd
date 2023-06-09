@@ -52,7 +52,7 @@ export class UsersRepository implements IUsersRepository {
     try {
       await mysqlDatabase.default
         .raw(sql, [email || null])
-        .then((data) => {
+        .then((data: any) => {
           if (data[0].length > 0) {
             data[0].forEach((result: any) => {
               response = result.exist
@@ -77,7 +77,7 @@ export class UsersRepository implements IUsersRepository {
     try {
       await mysqlDatabase.default
         .raw(sql, [id || null])
-        .then((data) => {
+        .then((data: any) => {
           if (data[0].length > 0) {
             data[0].forEach((userResult: any) => {
               user = {
@@ -109,7 +109,7 @@ export class UsersRepository implements IUsersRepository {
     try {
       await mysqlDatabase.default
         .raw(sql, [email || null])
-        .then((data) => {
+        .then((data: any) => {
           if (data[0].length > 0) {
             data[0].forEach((userResult: any) => {
               password = userResult["senha"];
@@ -142,7 +142,7 @@ export class UsersRepository implements IUsersRepository {
             email: postUserDTO.email || null,
           },
         ])
-        .then((insertedIndex) => {
+        .then((insertedIndex: any) => {
           index = insertedIndex;
         })
         .catch((error: any) => {
@@ -171,7 +171,7 @@ export class UsersRepository implements IUsersRepository {
             saldo: 0,
           },
         ])
-        .then((insertedIndex) => {
+        .then((insertedIndex: any) => {
           index = insertedIndex;
         })
         .catch((error: any) => {
