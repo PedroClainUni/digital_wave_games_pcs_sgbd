@@ -238,7 +238,7 @@ export class UsersRepository implements IUsersRepository {
   //       .update({
   //         senha: patchUserDTO.password,
   //       })
-  //       .then((insertedIndex) => {
+  //       .then((insertedIndex: any) => {
   //         index.push(insertedIndex);
   //       })
   //       .catch((error: any) => {

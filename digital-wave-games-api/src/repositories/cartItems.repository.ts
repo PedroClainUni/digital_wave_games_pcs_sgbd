@@ -10,7 +10,7 @@ export class CartItemsRepository implements ICartItemsRepository{
     
     const sql = `SELECT * FROM item_carrinho where id_carrinho=?`;
     try {
-        await mysqlDatabase.default.raw(sql, [cartId || null]).then(data => {
+        await mysqlDatabase.default.raw(sql, [cartId || null]).then((data: any) => {
             if (data[0].length > 0) {
                 data[0].forEach((result: any) => {
 
@@ -24,7 +24,7 @@ export class CartItemsRepository implements ICartItemsRepository{
               });
             }
 
-        }).catch(err => {
+        }).catch((err: any) => {
             logger.error(err);
             throw new Error(err);
         });
@@ -50,7 +50,7 @@ export class CartItemsRepository implements ICartItemsRepository{
             id_produto: postCartItemDTO.productId || null,
             quantidade: postCartItemDTO.amount || null
         }
-        ]).then( insertedIndex => {
+        ]).then((insertedIndex: any) => {
             index = insertedIndex;
         })
         .catch((error: any) => {

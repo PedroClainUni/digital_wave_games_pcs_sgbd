@@ -38,7 +38,7 @@ export class ConfirmationCodesRepository implements IConfirmationCodesRepository
     //     const sql = `SELECT * FROM codigo_confirmacao WHERE email = ? AND NOW() < validade  ORDER BY id DESC LIMIT 1; `;
 
     //     try {
-    //         await mysqlDatabase.default.raw(sql, [email || null]).then(data => {
+    //         await mysqlDatabase.default.raw(sql, [email || null]).then((data: any) => {
 
     //             if (data[0].length > 0) {
     //                 data[0].forEach((userResult: any) => {
