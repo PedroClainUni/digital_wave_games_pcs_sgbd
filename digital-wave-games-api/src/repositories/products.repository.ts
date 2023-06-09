@@ -12,7 +12,7 @@ export class ProductsRepository implements IProductsRepository {
         const sql = `SELECT * FROM produto;`;
 
         try {
-            await mysqlDatabase.default.raw(sql).then(data => {
+            await mysqlDatabase.default.raw(sql).then((data: any) => {
                 if (data[0].length > 0) {
                     data[0].forEach(async(result: any) => {
                         products.push({
@@ -25,7 +25,7 @@ export class ProductsRepository implements IProductsRepository {
                         });
                     });
                 }
-            }).catch(err => {
+            }).catch((err: any) => {
                 logger.error(err);
                 throw new Error(err);
             });
@@ -42,7 +42,7 @@ export class ProductsRepository implements IProductsRepository {
         
         const sql = `SELECT * FROM produto WHERE id=?`;
         try {
-            await mysqlDatabase.default.raw(sql, [id || null]).then(data => {
+            await mysqlDatabase.default.raw(sql, [id || null]).then((data: any) => {
                 if (data[0].length > 0) {
                     data[0].forEach(async(result: any) => {
                         product = {
@@ -56,7 +56,7 @@ export class ProductsRepository implements IProductsRepository {
                     });
                 }
 
-            }).catch(err => {
+            }).catch((err: any) => {
                 logger.error(err);
                 throw new Error(err);
             });
@@ -80,10 +80,10 @@ export class ProductsRepository implements IProductsRepository {
                     descricao: dto.description || null,
                     plataforma: dto.platform || null,
                 }])
-                .then((insertedIndex) => {
+                .then((insertedIndex: any) => {
                     index = insertedIndex
                 })
-                .catch(err => {
+                .catch((err: any) => {
                     logger.error(err);
                     throw new Error(err);
                 });
