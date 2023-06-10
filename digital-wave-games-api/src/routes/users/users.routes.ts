@@ -56,9 +56,9 @@ router.post('/send-confirmation-code', (request, response) => {
 //     return usersController.getAddresses(request, response);
 // });
 
-// router.post('/user/address', (request, response) => {
-//     return usersController.postAddress(request, response);
-// });
+ /* router.post('/user/address', (request, response) => {
+     return usersController.postAddress(request, response);
+ }); */
 
 router.put('/', (request, response) => {
     return usersController.updateAccount(request, response);

@@ -1,6 +1,7 @@
 import { PatchUserDTO, PutUserWalletDTO, User } from '../models';
 import { PostUserDTO } from '../models';
 import { PutUserDTO } from '../models';
+import { PostAddressDTO } from '../models';
 
 export interface IUsersRepository {
 
@@ -13,7 +14,9 @@ export interface IUsersRepository {
     createUserAccount(accountId: number): Promise<number[]>;
     // patchUser(patchUserDTO: PatchUserDTO): Promise<number[]>
     // getAddresses(userId: number): Promise<any[]>
+    // postAddress(postAddressDTO: PostAddressDTO): Promise<void>
     update(putUserDTO: PutUserDTO): Promise<void>;
     // changePassword(username: string, password: string): Promise<void>;
     getUserPassword(username: string): Promise<string>;
+    // getOrders(userId: number): Promise<any[]>
 }

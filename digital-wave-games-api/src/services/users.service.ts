@@ -1,5 +1,5 @@
 import { ICartsRepository, IUsersRepository } from '../interfaces';
-import { PostCartDTO, PostUserDTO, PutUserDTO, PutUserWalletDTO, ResponseBody, User } from '../models';
+import { PostCartDTO, PostUserDTO, PutUserDTO, PutUserWalletDTO, /*PostAddressDTO,*/ ResponseBody, User } from '../models';
 import logger from '../utils/logger';
 
 export class UsersService {
@@ -37,7 +37,18 @@ export class UsersService {
         }
 
     }
-    
+/*
+    async updateAddress(address: string): Promise<ResponseBody<User>> {
+        try {
+            const response = await this.usersRepository.updateAddress(address);
+            return { success: true, body: response };
+        }
+        catch (error: any) {
+            logger.error(error);
+            throw new Error(error);
+        }
+    }
+    */
     async existEmail(email: string): Promise<ResponseBody<boolean> | null> {
         try {
             const response = await this.usersRepository.existUserEmail(email);
@@ -164,4 +175,5 @@ export class UsersService {
     //     }
 
     // }
+    
 }
