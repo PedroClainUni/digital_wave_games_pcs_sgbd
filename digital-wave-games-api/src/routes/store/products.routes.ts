@@ -21,4 +21,9 @@ router.post('/product', (request, response) => {
 // router.delete('/product/:id', (request, response) => {
 //     return productsController.delete(request, response);
 // });
+/*
+router.put('/product/:id', (request, response) => {
+    return productsController.buyProduct(request, response);
+});
+*/
 export default router;

@@ -130,4 +130,23 @@ export class ProductsRepository implements IProductsRepository {
     //         throw new Error(error);
     //     }
     // }
+
+    /*
+    async buyProduct(quantity: number, id: number): Promise<boolean> {
+
+        const sql = `UPDATE produto SET quantidade = quantidade - ? WHERE id = ?`;
+        try {
+            await mysqlDatabase.default.raw(sql, [id || null]).then()
+                .catch((err: any) => {
+                    logger.error(err);
+                    throw new Error(err);
+                });
+        } catch (error: any) {
+            logger.error(error);
+            throw new Error(error);
+        }
+        return true;
+    }
+*/
+
 }
