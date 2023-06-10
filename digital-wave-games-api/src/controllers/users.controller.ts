@@ -105,9 +105,25 @@ export class UsersController {
                 message: error.message || 'Unexpected error.'
             })
         }
-
     }
+/*
+        async postAddress(request: Request, response: Response): Promise<Response> {
+            const {
+                userId,
+                address
+            } = request.body;
 
+            try {
+                const result = await this.usersService.postAddress({ address });
+                return response.json(result);
+            }
+            catch (error: any) {
+                return response.status(400).json({
+                    message: error.message || 'Unexpected error.'
+                })
+        }
+    }
+*/
     async addCartItem(request: Request, response: Response): Promise<Response> {
         const {
             cartId,
@@ -164,7 +180,7 @@ export class UsersController {
     // async getCart(request: Request, response: Response): Promise<Response> {
 
     //     try {
-    //         const result = await this.cartsService.getCartByClient(parseInt(request.params.client_id));
+    //         const result = await this.cartsService.getCartByUserId(parseInt(request.params.client_id));
     //         return response.send(result);
 
     //     } catch (error: any) {
@@ -196,4 +212,18 @@ export class UsersController {
     //     }
 
     // }
+
+    /* async getOrders(request: Request, response: Response): Promise<Response> {
+        try {
+            const result = await this.usersService.getOrders(parseInt(request.params.client_id));
+
+            return response.send(result);
+        }
+
+        catch (error: any) {
+            return response.status(400).json({
+                message: error.message || 'Unexpected error.'
+        }
+    }
+    */
 }

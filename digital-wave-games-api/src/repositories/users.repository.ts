@@ -1,5 +1,5 @@
 import { IUsersRepository } from "../interfaces";
-import { PatchUserDTO, PostUserDTO, PutUserDTO, PutUserWalletDTO, User } from "../models";
+import { PatchUserDTO, PostUserDTO, PutUserDTO, PutUserWalletDTO, /*PutAddressDTO,*/ User } from "../models";
 import { mysqlDatabase } from "../databases";
 import logger from "../utils/logger";
 
@@ -212,7 +212,19 @@ export class UsersRepository implements IUsersRepository {
       throw new Error(error);
     }
   }
-
+/*
+  async putAddress(putAddress: PutAddressDTO): Promise<void> {
+    const sql = "UPDATE contausuario INNER JOIN conta on contausuario.user_id_conta = conta.id SET endereco = ? WHERE conta.id = ?";
+    try {
+      await mysqlDatabase
+        .default
+        .raw(sql, [putAddress.address ?? null, putAddress.userId ?? null])
+    }
+    catch (error: any) {
+      logger.error(error);
+      throw new Error(error);
+  }
+*/
   // async changePassword(username: string, password: string): Promise<void> {
   //   try {
   //     await mysqlDatabase
