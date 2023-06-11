@@ -72,6 +72,22 @@ export class UsersController {
 
     }
 
+    async deleteAccount(request: Request, response: Response): Promise<Response> {
+        const {
+            id
+        } = request.body;
+
+        try {
+            const result = await this.usersService.deleteAccount(id);
+            return response.json(result);
+
+        } catch (error: any) {
+            return response.status(400).json({
+                message: error.message || 'Unexpected error.'
+            })
+        }
+    }
+
     async updateWallet(request: Request, response: Response): Promise<Response> {
         const {
             userId,

@@ -157,6 +157,23 @@ export class UsersRepository implements IUsersRepository {
     return index;
   }
 
+  async deleteAccount(id: number): Promise<void> {
+    try {
+      await mysqlDatabase
+        .default("conta")
+        .where("id", id)
+        .delete()
+        .catch((error: any) => {
+          logger.error(error);
+          throw new Error(error);
+        });
+    } 
+    catch (error: any) {
+      logger.error(error);
+      throw new Error(error);
+    }
+  }
+
   async createUserAccount(accountId: number): Promise<number[]> {
     let index: number[] = [];
 

@@ -11,6 +11,7 @@ export interface IUsersRepository {
     updateWallet(putUserWallet: PutUserWalletDTO): Promise<void>;
     // existEmployeeEmail(email: string): Promise<boolean>;
     createAccount(postUserDTO: PostUserDTO): Promise<number[]>;
+    deleteAccount(id: number): Promise<void>;
     createUserAccount(accountId: number): Promise<number[]>;
     // patchUser(patchUserDTO: PatchUserDTO): Promise<number[]>
     // getAddresses(userId: number): Promise<any[]>

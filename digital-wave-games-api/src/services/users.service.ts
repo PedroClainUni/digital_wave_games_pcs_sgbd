@@ -110,6 +110,24 @@ export class UsersService {
         }
     }
 
+    async deleteAccount(id: number): Promise<ResponseBody<undefined>> {
+
+        try {
+            const user = await this.usersRepository.getUserById(id)
+            if (!user) return { 
+                success: false, message: 'User not found ' 
+            }
+            await this.usersRepository.deleteAccount(id);
+            return {
+                success: true,
+            };
+        } 
+        catch (error: any) {
+            logger.error(error);
+            throw new Error(error);
+        }
+    }
+
     async updateWallet(putUserWalletDTO: PutUserWalletDTO): Promise<ResponseBody<undefined>> {
 
         try {
