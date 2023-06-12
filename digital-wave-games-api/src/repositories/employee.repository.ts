@@ -11,7 +11,7 @@ export class EmployeeRepository implements IEmployeeRepository {
     try {
       await mysqlDatabase.default
         .raw(sql, [email || null])
-        .then((data) => {
+        .then((data: any) => {
           if (data[0].length > 0) {
             data[0].forEach((result: any) => {
               response = result.exist
@@ -36,7 +36,7 @@ export class EmployeeRepository implements IEmployeeRepository {
     try {
       await mysqlDatabase.default
         .raw(sql, [email || null])
-        .then((data) => {
+        .then((data: any) => {
           if (data[0].length > 0) {
             data[0].forEach((userResult: any) => {
               password = userResult["senha"];

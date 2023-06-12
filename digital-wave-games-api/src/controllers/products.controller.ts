@@ -102,4 +102,17 @@ export class ProductsController {
     //     }
 
     // }
+/*
+    async buyProduct(request: Request, response: Response): Promise<Response> {
+        try {
+            const result = await this.productsService.buyProduct(Number(request.params.quantity), Number(request.params.id));
+            return response.send(result);
+        }
+        catch (error: any) {
+            return response.status(400).json({
+                message: error.message || 'Unexpected error.'
+            })
+        }
+    }
+    */
 }

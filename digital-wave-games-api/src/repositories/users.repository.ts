@@ -1,5 +1,5 @@
 import { IUsersRepository } from "../interfaces";
-import { PatchUserDTO, PostUserDTO, PutUserDTO, PutUserWalletDTO, User } from "../models";
+import { PatchUserDTO, PostUserDTO, PutUserDTO, PutUserWalletDTO, /*PutAddressDTO,*/ User } from "../models";
 import { mysqlDatabase } from "../databases";
 import logger from "../utils/logger";
 
@@ -52,7 +52,7 @@ export class UsersRepository implements IUsersRepository {
     try {
       await mysqlDatabase.default
         .raw(sql, [email || null])
-        .then((data) => {
+        .then((data: any) => {
           if (data[0].length > 0) {
             data[0].forEach((result: any) => {
               response = result.exist
@@ -77,7 +77,7 @@ export class UsersRepository implements IUsersRepository {
     try {
       await mysqlDatabase.default
         .raw(sql, [id || null])
-        .then((data) => {
+        .then((data: any) => {
           if (data[0].length > 0) {
             data[0].forEach((userResult: any) => {
               user = {
@@ -109,7 +109,7 @@ export class UsersRepository implements IUsersRepository {
     try {
       await mysqlDatabase.default
         .raw(sql, [email || null])
-        .then((data) => {
+        .then((data: any) => {
           if (data[0].length > 0) {
             data[0].forEach((userResult: any) => {
               password = userResult["senha"];
@@ -142,7 +142,7 @@ export class UsersRepository implements IUsersRepository {
             email: postUserDTO.email || null,
           },
         ])
-        .then((insertedIndex) => {
+        .then((insertedIndex: any) => {
           index = insertedIndex;
         })
         .catch((error: any) => {
@@ -155,6 +155,23 @@ export class UsersRepository implements IUsersRepository {
     }
 
     return index;
+  }
+
+  async deleteAccount(id: number): Promise<void> {
+    try {
+      await mysqlDatabase
+        .default("conta")
+        .where("id", id)
+        .delete()
+        .catch((error: any) => {
+          logger.error(error);
+          throw new Error(error);
+        });
+    } 
+    catch (error: any) {
+      logger.error(error);
+      throw new Error(error);
+    }
   }
 
   async createUserAccount(accountId: number): Promise<number[]> {
@@ -171,7 +188,7 @@ export class UsersRepository implements IUsersRepository {
             saldo: 0,
           },
         ])
-        .then((insertedIndex) => {
+        .then((insertedIndex: any) => {
           index = insertedIndex;
         })
         .catch((error: any) => {
@@ -212,7 +229,19 @@ export class UsersRepository implements IUsersRepository {
       throw new Error(error);
     }
   }
-
+/*
+  async putAddress(putAddress: PutAddressDTO): Promise<void> {
+    const sql = "UPDATE contausuario INNER JOIN conta on contausuario.user_id_conta = conta.id SET endereco = ? WHERE conta.id = ?";
+    try {
+      await mysqlDatabase
+        .default
+        .raw(sql, [putAddress.address ?? null, putAddress.userId ?? null])
+    }
+    catch (error: any) {
+      logger.error(error);
+      throw new Error(error);
+  }
+*/
   // async changePassword(username: string, password: string): Promise<void> {
   //   try {
   //     await mysqlDatabase
@@ -238,7 +267,7 @@ export class UsersRepository implements IUsersRepository {
   //       .update({
   //         senha: patchUserDTO.password,
   //       })
-  //       .then((insertedIndex) => {
+  //       .then((insertedIndex: any) => {
   //         index.push(insertedIndex);
   //       })
   //       .catch((error: any) => {

@@ -17,7 +17,7 @@ export class CartsRepository implements ICartsRepository {
 
     //                     cart = {
     //                         id: result['id'],
-    //                         clientId: result['id_cliente']
+    //                         cartId: result['id_carrinho']
     //                     };
     //                 });
     //             }
@@ -36,13 +36,13 @@ export class CartsRepository implements ICartsRepository {
 
     // }
 
-    async getCartByUserId(clientId: number): Promise<Cart | null> {
+    async getCartByUserId(userId: number): Promise<Cart | null> {
 
         let cart: Cart | null = null;
 
         const sql = `SELECT * FROM carrinho where car_id_conta = ?`;
         try {
-            await mysqlDatabase.default.raw(sql, [clientId || null]).then(data => {
+            await mysqlDatabase.default.raw(sql, [userId || null]).then((data: any) => {
                 if (data[0].length > 0) {
                     data[0].forEach((result: any) => {
 
@@ -53,7 +53,7 @@ export class CartsRepository implements ICartsRepository {
                     });
                 }
 
-            }).catch(err => {
+            }).catch((err: any) => {
                 logger.error(err);
                 throw new Error(err);
             });
@@ -72,7 +72,7 @@ export class CartsRepository implements ICartsRepository {
 
         const sql = `SELECT * FROM itemcarrinho where id_carrinho = ?`;
         try {
-            await mysqlDatabase.default.raw(sql, [cartId || null]).then(data => {
+            await mysqlDatabase.default.raw(sql, [cartId || null]).then((data: any) => {
                 if (data[0].length > 0) {
                     data[0].forEach((result: any) => {
 
@@ -86,7 +86,7 @@ export class CartsRepository implements ICartsRepository {
                     });
                 }
 
-            }).catch(err => {
+            }).catch((err: any) => {
                 logger.error(err);
                 throw new Error(err);
             });
@@ -111,7 +111,7 @@ export class CartsRepository implements ICartsRepository {
                     id_produto: postCartItemDTO.productId || null,
                     quantidade: postCartItemDTO.amount || null
                 }
-                ]).then(insertedIndex => {
+                ]).then((insertedIndex: any) => {
                     index = insertedIndex;
                 })
                 .catch((error: any) => {
@@ -155,6 +155,23 @@ export class CartsRepository implements ICartsRepository {
 
     // }
 
+    /* Possível refatoração do código de getTotalPrice? Testar depois:
+    
+    async getTotalPrice(cartId: number): Promise<number> {
+    const sql = `SELECT sum(ic.quantidade * p.preco) as sum FROM item_carrinho as ic join produto as p on ic.id_produto = p.id where id_carrinho=?`;
+    try {
+        const data = await mysqlDatabase.default.raw(sql, [cartId || null]);
+        if (data[0].length > 0) {
+            return data[0][0]['sum'];
+        }
+    } catch (error: any) {
+        logger.error(error);
+        throw new Error(error);
+    }
+    return 0;
+}
+*/
+
     async postCart(postCartDTO: PostCartDTO): Promise<number[]> {
 
         let index: number[] = [];
@@ -167,7 +184,7 @@ export class CartsRepository implements ICartsRepository {
                 .insert([{
                     car_id_conta: postCartDTO.clientId || null,
                 }
-                ]).then(insertedIndex => {
+                ]).then((insertedIndex: any) => {
                     index = insertedIndex;
                 })
                 .catch((error: any) => {

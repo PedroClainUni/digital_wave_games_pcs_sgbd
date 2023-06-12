@@ -10,4 +10,5 @@ export interface IProductsRepository {
   save(dto: PostProductDTO): Promise<number[]>;
   // putProduct(dto: PutProductDTO): Promise<void>;
   // deleteProduct(id: number): Promise<void>;
+  // buyProduct(quantity: number, id: number): Promise<void>;
 }
