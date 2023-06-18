@@ -3,4 +3,5 @@ node_modules/
 dist/
 .env
 applogs/
-*/docker/data
+*/database/*/data/
+build/
