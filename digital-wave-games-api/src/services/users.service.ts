@@ -37,6 +37,20 @@ export class UsersService {
         }
 
     }
+
+    async getByEmail(email: string): Promise<ResponseBody<User>> {
+        try {
+            const user = await this.usersRepository.getUserByEmail(email);
+
+            if (!user) return { success: false, message: 'User not found' }
+            else return { success: true, body: user }
+
+        } catch (error: any) {
+            logger.error(error);
+            throw new Error(error);
+        }
+
+    }
 /*
     async updateAddress(address: string): Promise<ResponseBody<User>> {
         try {
@@ -114,14 +128,14 @@ export class UsersService {
 
         try {
             const user = await this.usersRepository.getUserById(id)
-            if (!user) return { 
-                success: false, message: 'User not found ' 
+            if (!user) return {
+                success: false, message: 'User not found '
             }
             await this.usersRepository.deleteAccount(id);
             return {
                 success: true,
             };
-        } 
+        }
         catch (error: any) {
             logger.error(error);
             throw new Error(error);
@@ -193,5 +207,5 @@ export class UsersService {
     //     }
 
     // }
-    
+
 }

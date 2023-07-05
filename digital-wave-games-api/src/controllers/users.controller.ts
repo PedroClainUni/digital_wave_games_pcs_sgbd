@@ -33,6 +33,17 @@ export class UsersController {
         }
     }
 
+    async getByEmail(request: Request, response: Response): Promise<Response> {
+        try {
+            const result = await this.usersService.getByEmail(request.params.email);
+            return response.json(result);
+        } catch (error: any) {
+            return response.status(400).json({
+                message: error.message || 'Unexpected error.'
+            })
+        }
+    }
+
     async existEmail(request: Request, response: Response): Promise<Response> {
 
         try {

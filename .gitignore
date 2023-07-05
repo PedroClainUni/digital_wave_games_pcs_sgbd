@@ -5,3 +5,4 @@ dist/
 applogs/
 */database/*/data/
 build/
+.angular

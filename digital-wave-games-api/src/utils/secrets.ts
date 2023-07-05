@@ -31,7 +31,7 @@ export const CLIENT_SECRET = _.defaultTo(
 export const MYSQL = {
   USER: _.defaultTo(dotenv.config().parsed?.USER, "root"),
   PASSWORD: _.defaultTo(dotenv.config().parsed?.PW, "root"),
-  HOST: _.defaultTo(dotenv.config().parsed?.HOST, "mysql"),
+  HOST: _.defaultTo(dotenv.config().parsed?.HOST, "localhost"),
   PORT: _.defaultTo(dotenv.config().parsed?.PORT, '3306'),
   DATABASE: _.defaultTo(dotenv.config().parsed?.DATABASE, "digital_wave_games"),
 };

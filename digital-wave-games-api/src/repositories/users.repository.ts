@@ -101,6 +101,37 @@ export class UsersRepository implements IUsersRepository {
     return user;
   }
 
+  async getUserByEmail(email: string): Promise<User | null> {
+    let user: User | null = null;
+
+    const sql = `SELECT conta.id, email, nome, emailConfirm, saldo FROM conta INNER JOIN contausuario ON conta.id = contausuario.user_id_conta WHERE conta.email = ?;`;
+    try {
+      await mysqlDatabase.default
+        .raw(sql, [email || null])
+        .then((data: any) => {
+          if (data[0].length > 0) {
+            data[0].forEach((userResult: any) => {
+              user = {
+                id: userResult["id"],
+                name: userResult["nome"],
+                email: userResult["email"],
+                balance: userResult["saldo"],
+                emailConfirm: userResult["emailConfirm"]
+              };
+            });
+          }
+        })
+        .catch((error: any) => {
+          logger.error(error);
+          throw new Error(error);
+        });
+    } catch (error: any) {
+      logger.error(error);
+      throw new Error(error);
+    }
+    return user;
+  }
+
   async getUserPassword(email: string): Promise<string> {
     let password: string = "";
 
@@ -167,7 +198,7 @@ export class UsersRepository implements IUsersRepository {
           logger.error(error);
           throw new Error(error);
         });
-    } 
+    }
     catch (error: any) {
       logger.error(error);
       throw new Error(error);

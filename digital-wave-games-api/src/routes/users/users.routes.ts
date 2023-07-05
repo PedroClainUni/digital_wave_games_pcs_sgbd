@@ -16,6 +16,10 @@ router.get('/:id', (request, response) => {
     return usersController.getById(request, response);
 });
 
+router.get('/email/:email', (request, response) => {
+    return usersController.getByEmail(request, response);
+});
+
 router.post('/add-cart-item', (request, response) => {
     return usersController.addCartItem(request, response);
 });
