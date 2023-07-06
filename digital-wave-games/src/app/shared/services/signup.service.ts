@@ -6,6 +6,7 @@ import { Router } from "@angular/router"
 import { NotificationService } from '../../../app/shared/services/notification.service';
 import { SignUpCodeDTO } from '../models/dto/signUp/signUpCodeDTO'
 import { SignUpFormDTO } from '../models/dto/signUp/signupformDTO';
+import { ApiResponse } from '../models/dto/apiResponse.dto';
 
 @Injectable({
   providedIn: 'root'
@@ -17,19 +18,17 @@ export class SignupService {
     private notificationService: NotificationService,
     private router: Router) { }
 
-  signUp(signUpForm: SignUpFormDTO): Observable<number[]> {
+  signUp(signUpForm: SignUpFormDTO): Observable<ApiResponse<any>> {
 
-    return this.http.post<number[]>(`${environment.baseUrl}/clients/users`, signUpForm)
+    return this.http.post<ApiResponse<any>>(`${environment.baseUrl}/users`, signUpForm)
       .pipe(
         take(1),
-        tap((index: number[]) => {
-          if (index[0] === -1) {
-            this.notificationService.alert('O nome de usuário já existe!');
-          } else if (index[0] === -2) {
-            this.notificationService.alert('Código de verificação inválido!');
-          } else {
+        tap((response: ApiResponse<any>) => {
+          if (response.success) {
             this.notificationService.success('Cadastro concluído!');
             this.router.navigate(['/login']);
+          } else {
+            this.notificationService.alert(response.message)
           }
 
         }),
