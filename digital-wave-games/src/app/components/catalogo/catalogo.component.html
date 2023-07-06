@@ -9,7 +9,6 @@
             <mat-select formControlName="orderBy" [(value)]="selected">
               <mat-option value="rising-price">Preço crescente</mat-option>
               <mat-option value="decreasing-price">Preço decrescente</mat-option>
-              <mat-option value="release-date">Data de lançamento</mat-option>
             </mat-select>
           </mat-form-field>
         </div>
@@ -76,36 +75,13 @@
       <ngx-slider [formControl]="sliderControl" [value]="minPriceValue" [highValue]="maxPriceValue" [options]="priceOptions"></ngx-slider>
       <div class="plataform-filter">
         <mat-form-field [formGroup]="search" appearance="fill">
-          <mat-label>Plataforma </mat-label>
+          <mat-label>Plataforma</mat-label>
           <mat-select formControlName="plataforma" >
             <mat-option value="">Nenhum</mat-option>
-            <mat-option value="1">PS5</mat-option>
-            <mat-option value="2">Xbox Series X</mat-option>
-            <mat-option value="3">PS4</mat-option>
-            <mat-option value="4">Xbox One</mat-option>
-          </mat-select>
-        </mat-form-field>
-      </div>
-      <div class="gender-filter">
-        <mat-form-field [formGroup]="search" appearance="fill">
-          <mat-label>Gênero </mat-label>
-          <mat-select formControlName="genero" >
-            <mat-option value="">Nenhum</mat-option>
-            <mat-option value="1">Ação e aventura</mat-option>
-            <mat-option value="2">FPS</mat-option>
-            <mat-option value="3">Terror</mat-option>
-            <mat-option value="4">RPG</mat-option>
-          </mat-select>
-        </mat-form-field>
-      </div>
-      <div class="publisher-filter">
-        <mat-form-field [formGroup]="search" appearance="fill">
-          <mat-label>Publisher </mat-label>
-          <mat-select formControlName="publisher" >
-            <mat-option value="">Nenhum</mat-option>
-            <mat-option value="1">EA</mat-option>
-            <mat-option value="2">Rockstar Games</mat-option>
-            <mat-option value="3">Bandai Nanco</mat-option>
+            <mat-option value="PlayStation 5">PS5</mat-option>
+            <mat-option value="Xbox Series X">Xbox Series X</mat-option>
+            <mat-option value="Nintendo Switch">Nintendo Switch</mat-option>
+            <mat-option value="Xbox One">Xbox One</mat-option>
           </mat-select>
         </mat-form-field>
       </div>

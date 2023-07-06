@@ -1,6 +1,6 @@
 import { Component, OnInit, Injectable, AfterViewInit } from '@angular/core';
 import { MatStepperIntl } from '@angular/material/stepper';
-import { Product } from '../../shared/models/product/product.model';
+import { Product } from '../../shared/models/product/product.modelnew';
 import { PostCartItemDTO } from '../../../app/shared/models/dto/cartItem/postCartItem.dto';
 import { ProductService } from '../../shared/services/product.service';
 import { AuthenticationService } from '../../shared/services/authentication.service';
@@ -75,7 +75,7 @@ export class CatalogoComponent implements OnInit, AfterViewInit {
 
   }
 
-  getProducts() {
+  getProducts(){
     this.productService.getProducts().subscribe(response => {
       this.products = [];
       response.body.forEach(item => {
@@ -123,17 +123,15 @@ export class CatalogoComponent implements OnInit, AfterViewInit {
 
 
   enterSearch() {
-    // const name = this.search.get('searchBar').value;
-    // const platform = this.search.get('plataforma').value;
-    // const gender = this.search.get('genero').value;
-    // const publisher = this.search.get('publisher').value;
-    // const floor = this.sliderControl.value[0] * 100;
-    // const ceil = this.sliderControl.value[1] * 100;
-    // this.products = undefined;
-    // this.productService.getProducts().subscribe((products) => {
-    //   products = this.sorterProducts(products);
-    //   this.products = products.filter(this.haveName.bind(null, name, platform, gender, publisher, floor, ceil));
-    // });
+    const name = this.search.get('searchBar').value;
+    const platform = this.search.get('plataforma').value;
+    const floor = this.sliderControl.value[0];
+    const ceil = this.sliderControl.value[1];
+    this.products = undefined;
+    this.productService.getProducts().subscribe((products) => {
+    products = this.sorterProducts(products);
+    this.products = products.body.filter(this.haveName.bind(null, name, platform, floor, ceil));
+    });
 
   }
 
@@ -147,14 +145,11 @@ export class CatalogoComponent implements OnInit, AfterViewInit {
     this.enterSearch();
   }
 
-  private haveName(name, platform, gender, publisher, floor, ceil, element): boolean {
-    const hasName = (element.name.toUpperCase().indexOf(name.toUpperCase()) != -1 || name == "");
-    const hasGender = (element.gender.id == gender || gender == "");
-    const hasPlatform = (element.platform.id == platform || platform == "");
-    const hasPublisher = (element.publisher.id == publisher || publisher == "");
-    const isInLimitPrice = (ceil >= element.price && element.price >= floor);
-
-    return hasName && hasGender && hasPlatform && hasPublisher && isInLimitPrice;
+  private haveName(name, platform,floor, ceil, element): boolean {
+    const hasName = (element.nome.toUpperCase().indexOf(name.toUpperCase()) != -1 || name == "");
+    const hasPlatform = (element.plataforma == platform || platform == "");
+    const isInLimitPrice = (ceil >= element.preco && element.preco >= floor);
+    return hasName && hasPlatform && isInLimitPrice;
   }
 
   sorterProducts(products):Product[]{
@@ -176,14 +171,6 @@ export class CatalogoComponent implements OnInit, AfterViewInit {
           let priceOne = a.price;
           let priceTwo = b.price;
           return priceTwo - priceOne;
-        });
-        break;
-      }
-      case "release-date":{
-        products.sort((a,b)=>{
-          let dateOne = new Date(a.releaseDate);
-          let dateTwo = new Date(b.releaseDate);
-          return dateTwo.getTime() - dateOne.getTime();
         });
         break;
       }
