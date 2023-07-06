@@ -1,0 +1,57 @@
+<div class="dialog">
+  <div class="header">
+    <div class="title-container">
+      <h1 mat-dialog-title>Carteira Virtual</h1>
+      <p>Seu saldo é: <span>{{ formatPrice(wallet.funds) }}</span></p>
+    </div>
+    <div class="new-balance-container">
+      <p class="value">Valor: {{ formatPrice(valueToIncrease) }}</p>
+      <p class="new-balance">Novo saldo: {{ formatPrice(wallet.funds + valueToIncrease) }}</p>
+    </div>
+  </div>
+  <div class="btn-input">
+    <div class="btn-value">
+      <button mat-button class="main-button" (click)="setValueToIncrease(10000)"
+        [ngClass]="{'active': valueToIncrease === 10000}">R$ 100,00</button>
+      <!-- <button mat-button (click)="setValueToIncrease(20000)" [ngClass]="{'active': valueToIncrease === 20000}">R$ 200,00</button> -->
+      <button mat-button class="main-button" (click)="setValueToIncrease(50000)"
+        [ngClass]="{'active': valueToIncrease === 50000}">R$ 500,00</button>
+      <button mat-button class="main-button" (click)="setValueToIncrease(100000)"
+        [ngClass]="{'active': valueToIncrease === 100000}">R$ 1000,00</button>
+    </div>
+    <div class="OU">
+      <p>OU</p>
+    </div>
+    <div class="input-container">
+      <form [formGroup]="valueToIncreaseForm" (ngSubmit)="onSubmit()" class="form">
+        <mat-form-field class="input" [formGroup]="valueToIncreaseForm" (ngSubmit)="onSubmit()">
+          <mat-label>Informe uma quantia (R$):</mat-label>
+          <input type="text" class="amount_input" (keyup.enter)="updateInput($event)" matInput autocomplete="off"
+            formControlName="value">
+        </mat-form-field>
+        <button mat-button class="input-button main-button" type="submit">Confirmar</button>
+      </form>
+
+    </div>
+  </div>
+  <div class="container-methods">
+    <h1 class="title-methods">Métodos de compra</h1>
+    <mat-radio-group>
+      <div class="methods-buttons">
+        <!--
+                    TODO Id das formas de pagamento devem vir do banco de dados
+                -->
+        <mat-radio-button (click)="setPaymentType(4)" value="boleto">Boleto</mat-radio-button>
+      </div>
+    </mat-radio-group>
+  </div>
+  <!--
+        TODO formulário de cartão e PIX
+    -->
+  <div mat-dialog-actions class="actions">
+    <button class="cancel" mat-button (click)="cancel()">Cancelar</button>
+    <button class="submit" class="main-button" mat-button (click)="finishPurshase()">Continuar</button>
+  </div>
+
+
+</div>

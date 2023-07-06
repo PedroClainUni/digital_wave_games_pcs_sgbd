@@ -1,0 +1,66 @@
+@import './../../../../assets/styles/variables.scss';
+@import './../../../../assets/styles/search-bar.scss';
+
+footer {
+  background-color: $dark-gray;
+  padding: 20px 80px;
+
+    .top-footer {
+      border-bottom: 1px solid $light-gray;
+      display: flex;
+      justify-content: space-between;
+
+      .links {
+        width: inherit;
+        ul {
+            display: flex;
+            list-style: none;
+            padding: 0;
+            a {
+              text-decoration: none;
+              margin: 15px;
+
+              li {
+                  color: $light-gray;
+              }
+            }
+
+        }
+      }
+
+      .social {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+
+        a {
+          margin: 15px;
+
+          i {
+            color: $light-gray;
+            font-size: 22px;
+          }
+        }
+      }
+    }
+
+    .botom-footer {
+      padding: 20px 0;
+      display: flex;
+      align-items: center;
+
+      .footer-logo {
+        margin-right: 50px;
+      }
+
+      .text {
+        color: $light-gray;
+        text-align: center;
+      }
+    }
+
+    .copy-footer {
+      color: $light-gray;
+      text-align: center;
+    }
+}

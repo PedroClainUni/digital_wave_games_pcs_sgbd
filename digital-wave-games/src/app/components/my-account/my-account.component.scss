@@ -1,0 +1,173 @@
+@import '../../../assets/styles/variables.scss';
+
+div::-webkit-scrollbar {
+  background-color: $gray;
+  width: 10px;
+  height: 10px;
+  border-radius: 5px;
+}
+
+div::-webkit-scrollbar-thumb {
+  background-color: $light-gray;
+  border-radius: 5px;
+}
+
+.main {
+  display: block !important;
+  max-width: 1920px;
+  margin: auto;
+  padding: $padding-page;
+  display: flex;
+  flex-direction: column;
+
+  button {
+    color: $light-gray !important;
+  }
+
+  .title {
+    color: $light-gray;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+
+    h2 {
+      font-size: 30px;
+    }
+
+    .wallet-button {
+      background-color: #131313 !important;
+      border: 2px solid $green;
+      color: $green !important;
+    }
+  }
+
+  .body {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: row;
+    gap: 10px;
+
+    .avaliation-list {
+      overflow-y: auto;
+      width: 75%;
+      gap: 10px;
+      display: flex;
+      flex-direction: column;
+      height: 650px;
+
+      .avaliation {
+        padding: 15px;
+        border-radius: 5px;
+        display: flex;
+        flex-direction: row;
+        background-color: $dark-gray;
+
+        .package-img-container {
+          width: 680px;
+          .container-img {
+            width:100%;
+  
+            .img-game {
+              height: 100%;
+              width: 100%;
+            }
+        }
+        }
+
+        .avaliation-info {
+          width: 100%;
+          padding: 20px;
+
+          .name-rate {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+
+            .title-game {
+              font-size: 25px;
+              color: $light-gray;
+            }
+
+            i {
+              color: $golden;
+            }
+          }
+
+          .container-desc {
+            display: flex;
+            justify-content: space-between;
+            color: $light-gray;
+
+            .order-infos {
+              max-width: 250px;
+              p {
+                text-align: end;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .account-infos {
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      border-radius: 5px;
+      width: 25%;
+      background-color: $dark-gray;
+
+      .img-perfil {
+        width: 100%;
+      }
+
+      .username {
+        display: flex;
+        color: $light-gray;
+      }
+
+      .title-credits {
+        font-size: 25px;
+        color: $light-gray;
+      }
+
+      .credits-aquisition {
+        font-size: 20px;
+        color: $light-gray;
+        align-items: center;
+
+        .credits {
+          display: flex;
+          flex-direction: column;
+          margin-right: 20px !important;
+          justify-content: center;
+        }
+
+        .add-credits {
+          background: $green;
+          color: $black;
+          margin-bottom: 15px;
+        }
+      }
+
+      .avaliations {
+        font-size: 20px;
+        color: $light-gray;
+      }
+
+      .games {
+        font-size: 20px;
+        color: $light-gray;
+      }
+
+      .delivery {
+        display: flex;
+        justify-content: center;
+        background-color: $green;
+        color: $black;
+      }
+    }
+  }
+
+}

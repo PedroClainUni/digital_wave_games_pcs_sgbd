@@ -1,0 +1,63 @@
+<div class="main">
+    <div class="title">
+        <h2>Seu Carrinho</h2>
+        <div *ngIf="this.authenticationService.isLoggedIn() && wallet">
+          <button class="wallet-button" mat-button #tooltip="matTooltip" matTooltip="CARTEIRA">
+            {{ wallet.funds | currency:'BRL': 'symbol' }}
+          </button>
+        </div>
+    </div>
+    <div class="grid">
+        <div class="lista-produto">
+          <h2 *ngIf="cartProducts.size == 0">- Não há itens no seu carrinho -</h2>
+            <div class="produto" *ngFor="let product of cartProducts | keyvalue">
+                <button class="btn-close" mat-button (click)="deleteCartItem(product.value.cartItemId)">
+                    <mat-icon class="close" matSuffix>close</mat-icon>
+                </button>
+                <div class="img_description">
+                    <img class="product-img" mat-card-image src="{{ product.value.imgUrl }}">
+                    <div class="descricao-nome">
+                        <h2>{{product.value.name}}</h2>
+                        <div class="description_container">
+                            <div class="descricao">
+                                <p>{{product.value.description}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="price_ammount">
+                   <div class="price_ammount_container">
+                        <p class="price"><span>{{ product.value.formatPrice }}</span></p>
+                        <div class="add-dec">
+                        
+                            <button class="decrement" (click)="decreaseAmount(product.key)">
+                                <mat-icon matSuffix>remove</mat-icon>
+                            </button>
+                            <div class="quantity">
+                                <input type="text" class="amount_input" id="amount_input_{{ product.key }}" (keyup.enter)="updateInput(product.key, $event)" value={{product.value.amount}}>
+                            </div>
+                            <button class="add" (click)="increaseAmount(product.key)">
+                                <mat-icon matSuffix>add</mat-icon>
+                            </button>
+                        </div>
+                   </div>
+                   
+                    <div class="total_price_container">
+                        <p><span id="price_{{ product.key }}">{{ product.value.formatTotalPrice }}</span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="aside">
+            <div class="actions-cart">
+                <button class="limpar" mat-button (click)="clearCart()">Limpar Carrinho</button>
+                <button class="continuar" routerLink="/catalogo" mat-button>Continuar Comprando</button>
+                <button class="finalizar" mat-button (click)="finishPurchase()">Finalizar pedido</button>
+            </div>
+            <div class="final_price_container" >
+                <h2 *ngIf="cartProducts.size > 0">Subtotal: <span id="final_price">{{ formatFinalPrice }}</span> </h2>
+                <h2 *ngIf="cartProducts.size <= 0">- Não há itens no seu carrinho -</h2>
+            </div>
+        </div>
+    </div>
+</div>

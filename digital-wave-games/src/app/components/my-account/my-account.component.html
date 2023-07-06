@@ -1,0 +1,49 @@
+<div class="main">
+  <div class="title">
+    <h2>Ultimas compras</h2>
+    <button class="wallet-button" mat-button #tooltip="matTooltip" matTooltip="CARTEIRA">
+      {{ formatPrice(funds)}}
+    </button>
+  </div>
+  <div class="body">
+    <div class="avaliation-list">
+      <div class="avaliation" *ngFor="let order of orders; let i = index">
+        <!-- <div class="avaliation"> -->
+       <div class="package-img-container">
+        <div class="container-img">
+          <img class="img-game" src="{{ order.orderItems[0].imgUrl }}">
+        </div>
+       </div>
+        <div class="avaliation-info">
+          <div class="name-rate">
+            <h2 class="title-game">Pacote {{ i + 1 }}</h2>
+          </div>
+          <div class="container-desc" >
+            <div class="product-names" >
+              <p *ngFor="let orderItem of order.orderItems">{{ orderItem.productName }}</p>
+            </div>
+            <div class="order-infos">
+              <p>Entregue em {{ order.expectedDeliveryDate }}</p>
+              <p>Comprado em <span>{{ order.purchaseDate }}</span></p>
+              <p>Total pago de <span>{{ order.totalPrice/100 | currency:'BRL': 'symbol' }}</span></p>
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="account-infos">
+      <img class="img-perfil" src="{{getAvatar()}}">
+      <h2 class="username">@{{ username }}</h2>
+      <!-- <h2 class="title-credits">Saldo na carteira:</h2> -->
+      <div class="credits-aquisition">
+        <!-- <p class="credits">{{formatPrice(funds)}}</p> -->
+        <button mat-button class="add-credits" (click)="buyCredits()">Adquirir Saldo</button>
+        <button mat-button class="delivery" routerLink="/minha-conta/editar">Editar perfil</button>
+      </div>
+      <!-- <p class="avaliations">Análises: 40</p> -->
+      <!-- <p class="games">Jogos Adquiridos: 42</p> -->
+
+    </div>
+  </div>
+</div>

@@ -1,0 +1,55 @@
+@import '../../../assets/styles/variables.scss';
+
+.buttons {
+  background-color: $green;
+  color: $white;
+  height: 100%;
+  align-self: center;
+}
+
+.hint {
+  color: $light-gray;
+  font-size: 12px;
+}
+
+table {
+  width: 100%;
+  margin-top: 25px;
+  background-color: $dark-gray;
+
+  .mat-cell,
+  .mat-header-cell {
+    color: $light-gray;
+    font-size: 15px;
+  }
+}
+
+.main {
+  padding: $padding-page;
+
+  .nav {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+
+    .search {
+      display: flex;
+      gap: 10px;
+    }
+
+    .title {
+      text-align: center;
+      color: $light-gray;
+      font-size: 35px;
+    }
+  }
+
+  .form {
+    border-radius: 5px;
+    margin-top: 10px;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    background-color: $gray;
+  }
+}

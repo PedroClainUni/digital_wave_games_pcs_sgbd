@@ -1,0 +1,49 @@
+@import '../../../assets/styles/variables.scss';
+
+.main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: $padding-page;
+
+  .form-container {
+    flex-direction: column;
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+
+    .title {
+      align-self: center;
+      font-size: 35px;
+      color: $light-gray;
+    }
+
+    .form {
+      align-self: center;
+      color: $light-gray;
+      gap: 10px;
+      padding: 1px;
+      overflow: hidden;
+      border-radius: 5px;
+      display: flex;
+      flex-direction: column;
+      width: 70%;
+      height: 90%;
+      margin-top: 5em;
+
+      .text {
+        textarea {
+          resize: none;
+        }
+      }
+
+      button {
+        background-color: $green;
+        color: white;
+        width: 10%;
+        align-self: flex-end;
+      }
+    }
+  }
+}

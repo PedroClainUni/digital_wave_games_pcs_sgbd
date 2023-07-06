@@ -1,0 +1,41 @@
+<h1>Adicionar novo endereço</h1>
+<form class="form" [formGroup]="addressFormGroup" (ngSubmit)="postAddress()">  
+     <mat-form-field id="form-cep-input" class="form-input" appearance="fill">
+        <mat-label>Cep</mat-label>
+        <input matInput type="text" formControlName="cep">
+      </mat-form-field>
+      <mat-form-field id="form-city-input" class="form-input" appearance="fill">
+        <mat-label>Cidade</mat-label>
+        <input matInput type="text" formControlName="city">
+      </mat-form-field>
+      <mat-form-field id="form-state-input" class="form-input" appearance="fill">
+        <mat-label>Estado</mat-label>
+        <input matInput type="text" formControlName="state">
+      </mat-form-field>
+      <mat-form-field id="form-district-input" class="form-input" appearance="fill">
+        <mat-label>Bairro</mat-label>
+        <input matInput type="text" formControlName="district">
+      </mat-form-field>
+      <mat-form-field id="form-street-input" class="form-input" appearance="fill">
+        <mat-label>Rua</mat-label>
+        <input matInput type="text" formControlName="street">
+      </mat-form-field>      
+      <mat-form-field id="form-addicional-input" class="form-input" appearance="fill">
+        <mat-label>Complemento</mat-label>
+        <input matInput type="text" formControlName="additional">
+      </mat-form-field>
+
+      <mat-form-field id="form-cp-input" class="form-input" appearance="fill">
+        <mat-label>Código postal</mat-label>
+        <input matInput type="text" formControlName="postalCode">
+      </mat-form-field>
+
+      <mat-form-field id="form-number-input" class="form-input" appearance="fill">
+        <mat-label>Número</mat-label>
+        <input matInput type="text" formControlName="number">
+      </mat-form-field>
+    <div class="action-buttons">
+        <button mat-button class="cancel-button" type="button" (click)="closeDialog()">Cancelar</button>
+        <button mat-button class="main-button" type="submit">Enviar</button>
+    </div>
+</form>

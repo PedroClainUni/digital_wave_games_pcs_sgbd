@@ -1,0 +1,145 @@
+@import '../../../../assets/styles/variables.scss';
+
+
+
+.dialog {
+ 
+  .mat-form-field-flex {
+    padding: .75em .75em 0 .75em !important;
+  }
+
+  button {
+    color: $light-gray !important;
+  }
+
+  .main-button {
+    background: $green;
+    width: 120px;
+    height: 35px;
+    transition: .1s;
+  }
+
+  p{
+      color: $light-gray;
+  }
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 16px !important;
+    .title-container {
+      h1 {
+        margin: 0 !important;
+        margin-bottom: 10px !important;
+        color: $light-gray;
+        align-self: center;
+      }
+    }
+
+    .new-balance-container {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+
+      .value {
+        color: $light-gray;
+        text-align: end;
+        margin-bottom: 10px !important;
+      }
+    }
+  }
+
+  .btn-input {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: 20px 0;
+    gap: 10px;
+
+    .OU {
+
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      margin: 20px 0;
+
+      p {
+        text-align: center;
+        font-size: 20px;
+        margin: 0;
+        color: $light-gray
+      }
+    }
+
+    .input-container {
+
+      .form {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .input {
+          align-self: center;
+          width: 65%;
+          border-radius: 5px;
+    
+          mat-label {
+            color: $light-gray;
+          }
+        }
+      }
+    }
+
+    .btn-value {
+      display: grid;
+      justify-content: space-between;
+      grid-template-columns: auto auto auto;
+      gap: 8px;
+
+      button.active {
+        border: 2px solid $green;
+        background: none;
+        color: $green !important;
+        
+      }
+    }
+  }
+
+  .actions {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    .cancel {
+      border: 2px solid $red;
+      color: $red !important;
+    }
+
+    .submit {
+      background-color: $green;
+    }
+  }
+
+  .container-methods {
+    margin-bottom: 24px;
+
+    .title-methods {
+      color: $light-gray;
+      display: flex;
+      flex-direction: row;
+      padding-top: 15px;
+      margin-bottom: 16px !important;
+    }
+    .methods-buttons{
+        display: flex;
+        flex-direction: row;
+        color: $light-gray;
+
+        mat-radio-button {
+          margin-right: 48px !important;
+        }
+    }
+  }
+}

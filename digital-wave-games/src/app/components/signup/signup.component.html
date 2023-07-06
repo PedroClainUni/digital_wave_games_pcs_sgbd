@@ -1,0 +1,184 @@
+<div class="signup">
+  <div class="main-section">
+    <h2>Cadastrar</h2>
+    <mat-card>
+
+      <mat-stepper #stepper>
+        <mat-step [stepControl]="accountFormGroup" errorMessage="Incompleto">
+
+          <form [formGroup]="accountFormGroup">
+            <ng-template matStepLabel>Dados da Conta</ng-template>
+
+            <mat-form-field class="full-width-input" appearance="fill">
+              <mat-label>Email</mat-label>
+              <input matInput formControlName="emailCtrl" required autocomplete="off">
+              <mat-error *ngIf="accountFormGroup.get('emailCtrl').hasError('email') && !accountFormGroup.get('emailCtrl').hasError('required')">
+                Informe um email válido
+              </mat-error>
+              <mat-error *ngIf="accountFormGroup.get('emailCtrl').hasError('required')">
+                O email é obrigatório
+              </mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="full-width-input" appearance="fill">
+              <mat-label>Nome de usuário</mat-label>
+              <input matInput formControlName="usernameCtrl" required autocomplete="off">
+              <mat-error *ngIf="accountFormGroup.get('usernameCtrl').hasError('required')">
+                O nome de usuário é obrigatório
+              </mat-error>
+              <mat-error *ngIf="accountFormGroup.get('usernameCtrl').hasError('pattern')">
+                O nome de usuário só pode conter letras e números
+              </mat-error>
+              <mat-error *ngIf="accountFormGroup.get('usernameCtrl').hasError('minlength')">
+                O nome de usuário deve ter pelo menos 5 caracteres
+              </mat-error>
+              <mat-error *ngIf="accountFormGroup.get('usernameCtrl').hasError('maxlength')">
+                O nome de usuário deve ter no máximo 30 caracteres
+              </mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="full-width-input" appearance="fill">
+              <mat-label>Senha</mat-label>
+              <input matInput type="password" formControlName="passwordCtrl" required autocomplete="off">
+              <mat-error *ngIf="accountFormGroup.get('passwordCtrl').hasError('required')">
+                A senha é obrigatória
+              </mat-error>
+              <mat-error *ngIf="accountFormGroup.get('passwordCtrl').hasError('minlength')">
+                A senha deve ter pelo menos 8 caracteres
+              </mat-error>
+              <mat-error *ngIf="accountFormGroup.get('passwordCtrl').hasError('strength')">
+                Requisitos: (1) 8 caracteres; (2) uma maiúscula; (3) uma minúscula, (4) um número
+              </mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="full-width-input" appearance="fill">
+              <mat-label>Confirmação da Senha</mat-label>
+              <input matInput type="password" formControlName="passwordConfirmationCtrl" required autocomplete="off">
+              <mat-error *ngIf="accountFormGroup.get('passwordConfirmationCtrl').hasError('required')">
+                A confirmação da senha é obrigatória
+              </mat-error>
+              <mat-error *ngIf="accountFormGroup.get('passwordConfirmationCtrl').hasError('mismatch')">
+                As senhas não correspondem
+              </mat-error>
+            </mat-form-field>
+
+            <div class="navigator">
+              <button mat-flat-button matStepperNext>Próximo</button>
+            </div>
+          </form>
+
+        </mat-step>
+        <mat-step [stepControl]="personalFormGroup" optional>
+          <form [formGroup]="personalFormGroup">
+            <ng-template matStepLabel>Dados Pessoais</ng-template>
+            <h3>Informações de endereço</h3>
+
+            <mat-grid-list cols="3" rowHeight="2:1" [gutterSize]="'10px'">
+              <mat-grid-tile>
+                <mat-form-field class="small-input" appearance="fill">
+                  <mat-label>CEP</mat-label>
+                  <input matInput formControlName="postalCodeCtrl" autocomplete="off">
+                </mat-form-field>
+              </mat-grid-tile>
+              <mat-grid-tile [colspan]="2">
+                <mat-form-field class="medium-input" appearance="fill">
+                  <mat-label>Cidade</mat-label>
+                  <input matInput formControlName="cityCtrl" autocomplete="off">
+                </mat-form-field>
+              </mat-grid-tile>
+            </mat-grid-list>
+
+            <mat-grid-list cols="3" rowHeight="2:1" [gutterSize]="'10px'">
+              <mat-grid-tile>
+                <mat-form-field class="small-input" appearance="fill">
+                  <mat-label>UF</mat-label>
+                  <input matInput formControlName="stateCtrl" autocomplete="off">
+                </mat-form-field>
+              </mat-grid-tile>
+              <mat-grid-tile [colspan]="2">
+                <mat-form-field class="medium-input" appearance="fill">
+                  <mat-label>Bairro</mat-label>
+                  <input matInput formControlName="districtCtrl" autocomplete="off">
+                </mat-form-field>
+              </mat-grid-tile>
+            </mat-grid-list>
+
+            <mat-form-field class="full-width-input" appearance="fill">
+              <mat-label>Rua</mat-label>
+              <input matInput formControlName="streetCtrl" autocomplete="off">
+            </mat-form-field>
+
+            <mat-grid-list cols="3" rowHeight="2:1" [gutterSize]="'10px'">
+              <mat-grid-tile>
+                <mat-form-field class="small-input" appearance="fill">
+                  <mat-label>Número</mat-label>
+                  <input matInput formControlName="numberCtrl" autocomplete="off">
+                </mat-form-field>
+              </mat-grid-tile>
+              <mat-grid-tile [colspan]="2">
+                <mat-form-field class="medium-input" appearance="fill">
+                  <mat-label>Complemento</mat-label>
+                  <input matInput formControlName="additionalInfoCtrl" autocomplete="off">
+                </mat-form-field>
+              </mat-grid-tile>
+            </mat-grid-list>
+
+            <h3>Informações de contato</h3>
+            <mat-grid-list cols="3" rowHeight="2:1" [gutterSize]="'10px'">
+              <mat-grid-tile>
+                <mat-form-field class="small-input" appearance="fill">
+                  <mat-label>Telefone fixo</mat-label>
+                    <input matInput formControlName="phone1Ctrl" autocomplete="off">
+                  </mat-form-field>
+                </mat-grid-tile>
+                <mat-grid-tile>
+                  <mat-form-field class="small-input" appearance="fill">
+                    <mat-label>Celular 1</mat-label>
+                    <input matInput formControlName="phone2Ctrl" autocomplete="off">
+                  </mat-form-field>
+                </mat-grid-tile>
+                <mat-grid-tile>
+                  <mat-form-field class="small-input" appearance="fill">
+                    <mat-label>Celular 2</mat-label>
+                    <input matInput formControlName="phone3Ctrl" autocomplete="off">
+                  </mat-form-field>
+                </mat-grid-tile>
+              </mat-grid-list>
+
+              <mat-form-field class="full-width-input" appearance="fill">
+                <mat-label>Email para contato</mat-label>
+                <input matInput formControlName="secondaryEmailCtrl" autocomplete="off">
+                <mat-error *ngIf="personalFormGroup.get('secondaryEmailCtrl').hasError('email') && !personalFormGroup.get('secondaryEmailCtrl').hasError('required')">
+                  Informe um email válido
+                </mat-error>
+              </mat-form-field>
+
+            <div class="navigator">
+              <button mat-button matStepperPrevious>Voltar</button>
+              <button mat-flat-button matStepperNext>Próximo</button>
+            </div>
+          </form>
+        </mat-step>
+        <mat-step>
+          <ng-template matStepLabel>Confirmação</ng-template>
+          <div class="confirmation-wrapper">
+            <button class="code-button" [disabled]="sentCode || !hasEmail()" (click)="sendCode()" mat-flat-button matStepperNext>Enviar código</button>
+            <form [formGroup]="confirmationFormGroup">
+              <mat-form-field class="medium-input" appearance="fill">
+                <mat-label>Código de confirmação</mat-label>
+                <input matInput formControlName="confirmationCodeCtrl" autocomplete="off">
+              </mat-form-field>
+            </form>
+          </div>
+          <p class="confirmation">Ao se cadastrar, você aceita os <a routerLink="/">Termos de Uso</a>, <a routerLink="/">Política de Privacidade</a> e a <a routerLink="/">Política de Cookies</a>.</p>
+          <div class="navigator">
+            <button mat-button matStepperPrevious>Voltar</button>
+            <button mat-flat-button [disabled]="!isFormValid()" (click)="confirmSignup()">Confirmar</button>
+          </div>
+        </mat-step>
+      </mat-stepper>
+
+
+    </mat-card>
+  </div>
+</div>

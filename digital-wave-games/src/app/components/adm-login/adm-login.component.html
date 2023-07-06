@@ -1,0 +1,25 @@
+<div class="login">
+    <div class="section">
+        <h2>Entrar na conta</h2>
+        <mat-card>
+            <form [formGroup]="loginFormGroup">
+                <div class="fields">
+                <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label>Nome de usuário</mat-label>
+                    <input matInput formControlName="usernameCtrl">
+                </mat-form-field>
+                <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label>Senha</mat-label>
+                    <input type="password" matInput formControlName="passwordCtrl">
+                </mat-form-field>
+            </div>
+                <a class="login-button">
+                    <button (click)="login()" class="navbar-button green-button" mat-button>
+                        <div class="auth-button">
+                            Entrar
+                        </div>
+                    </button>
+                </a>
+            </form>
+        </mat-card>
+    </div>

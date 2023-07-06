@@ -1,0 +1,49 @@
+<div class="login">
+  <div class="left-section">
+    <h2>Entrar na conta</h2>
+    <mat-card>
+      <div class="divider" text-position="center">OU</div>
+      <form [formGroup]="loginFormGroup">
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>Nome de usuário</mat-label>
+          <input matInput formControlName="usernameCtrl" />
+        </mat-form-field>
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>Senha</mat-label>
+          <input type="password" matInput formControlName="passwordCtrl" />
+        </mat-form-field>
+        <a class="login-button" routerLink="/login">
+          <button
+            (click)="login()"
+            class="navbar-button green-button"
+            mat-button
+          >
+            <div class="auth-button">Entrar</div>
+          </button>
+        </a>
+        <a routerLink="/restauracao-senha" class="forgot-password"
+          >Esqueceu a senha?</a
+        >
+      </form>
+    </mat-card>
+  </div>
+  <div class="right-section">
+    <lottie-player
+      src="assets/animations/75379-lebleby-games-demo-animation.json"
+      background="transparent"
+      speed="1"
+      loop
+      autoplay
+    >
+    </lottie-player>
+    <p class="ad">
+      Crie uma conta na Digital Wave Games para encontrar os seus jogos em mídia
+      física favoritos!
+    </p>
+    <a routerLink="/cadastrar">
+      <button class="navbar-button green-button" mat-button>
+        <div class="auth-button">Cadastrar-se</div>
+      </button>
+    </a>
+  </div>
+</div>

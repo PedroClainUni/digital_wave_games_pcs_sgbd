@@ -1,0 +1,26 @@
+@import 'variables.scss';
+
+::ng-deep .ngx-slider-pointer {
+  background-color: $green !important;
+  width: 20px !important;
+  height: 20px !important;
+  top: -9px !important;
+}
+
+::ng-deep .ngx-slider-selection {
+  background-color: $gray !important;
+}
+
+::ng-deep .ngx-slider-pointer::after {
+  background-color: $green !important;
+  top: 6px !important;
+  left: 6px !important;
+}
+
+::ng-deep .ngx-slider-bar {
+  background-color: $gray !important;
+}
+
+::ng-deep .ngx-slider-bubble {
+  color: $light-gray !important;
+}

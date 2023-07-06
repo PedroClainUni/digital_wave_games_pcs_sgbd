@@ -1,0 +1,33 @@
+.success-msg {
+  background-color: green !important;
+
+  button.mat-button .mat-button-wrapper {
+    color: #fff !important;
+  }
+
+  .mat-simple-snackbar span {
+    color: #fff !important;
+  }
+
+  font-weight: 500;
+}
+
+.error-msg {
+  background-color: #f44336 !important;
+  color: #fff !important;
+  font-weight: 500 !important;
+
+  button.mat-button .mat-button-wrapper {
+    color: #fff !important;
+  }
+}
+
+.alert-msg {
+  background-color: #ffd740 !important;
+  font-weight: 500 !important;
+  color: #525252 !important;
+
+  button.mat-button .mat-button-wrapper {
+    color: #525252 !important;
+  }
+}

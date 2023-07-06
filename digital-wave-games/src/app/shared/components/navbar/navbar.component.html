@@ -1,0 +1,46 @@
+<div *ngIf="loaderService.isLoading | async" class="progress-bar-wrapper">
+  <mat-progress-bar mode="determinate" [value]="progress"></mat-progress-bar>
+</div>
+<nav>
+  <div class="logo">
+    <a routerLink="/"><button mat-flat-button class="navbar-button logo-button"><img src="assets/images/dwg-small.png" width="34" height="34" alt="logo"></button></a>
+  </div>
+  <div class="button-row">
+    <a routerLink="/catalogo"><button mat-button class="navbar-button">Catalogo</button></a>
+    <a routerLink="/"><button mat-button class="navbar-button">Sobre</button></a>
+    <a routerLink="/suporte"><button mat-button class="navbar-button">Suporte</button></a>
+  </div>
+  <div class="right-section">
+    <div class="search">
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Buscar</mat-label>
+        <input matInput autocomplete="off">
+        <mat-icon matSuffix>search</mat-icon>
+      </mat-form-field>
+    </div>
+    <div *ngIf="authenticationService.isLoggedOut(); else elseBlock">
+      <a routerLink="/login">
+        <button class="navbar-button green-button" mat-flat-button>
+          <div class="auth-button">
+            <mat-icon matSuffix>account_circle</mat-icon>
+            Entrar
+          </div>
+        </button>
+      </a>
+    </div>
+    <ng-template #elseBlock>
+      <button class="navbar-button green-button" mat-flat-button [matMenuTriggerFor]="profileMenu">
+        <div class="auth-button">
+          <mat-icon matSuffix>account_circle</mat-icon>
+          {{ authenticationService.getUsername() }}
+          <mat-icon>keyboard_arrow_down</mat-icon>
+        </div>
+      </button>
+      <mat-menu #profileMenu="matMenu">
+        <button routerLink="/minha-conta" mat-menu-item>Perfil</button>
+        <button (click)="logout()" mat-menu-item>Sair</button>
+      </mat-menu>
+    </ng-template>
+
+  </div>
+</nav>

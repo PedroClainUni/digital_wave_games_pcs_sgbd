@@ -1,0 +1,119 @@
+<div class="wrapper">
+  <div class="main">
+    <div class="main-container">
+      <div class="bar-container">
+
+        <div class="filter-container">
+          <mat-form-field [formGroup]="search" appearance="fill">
+            <mat-label>Ordenar por</mat-label>
+            <mat-select formControlName="orderBy" [(value)]="selected">
+              <mat-option value="rising-price">Preço crescente</mat-option>
+              <mat-option value="decreasing-price">Preço decrescente</mat-option>
+              <mat-option value="release-date">Data de lançamento</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+        <div class="search">
+          <mat-form-field [formGroup]="search" class="filter-search-bar" appearance="fill">
+            <mat-label>Buscar</mat-label>
+            <input (keyup.enter)="enterSearch()" formControlName="searchBar" matInput autocomplete="off">
+            <mat-icon matSuffix>search</mat-icon>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="catalog-container">
+        <div *ngIf="!products" class="spinner-container">
+          <mat-progress-spinner
+          mode="indeterminate">
+          </mat-progress-spinner>
+        </div>
+        <div class="item" *ngFor="let product of products">
+        <mat-card>
+          <a routerLink="/produto/{{ product.id }}">
+            <img class="product-img" mat-card-image src="https://meialua.net/wp-content/uploads/2022/11/god-of-war-ragnarok-wallpaper-scaled.jpg">
+            <mat-card-header>
+              <div class="mat-card-header-text">
+               <div class="header-wrapper">
+                <mat-card-title class="product-price">
+                  {{ product.preco | currency:'BRL': 'symbol' }}
+                </mat-card-title>
+               </div>
+                <mat-card-subtitle class="product-name">{{ product.nome }} - {{product.plataforma}}</mat-card-subtitle>
+              </div>
+              <div class="product-description">
+                {{product.descricao}}
+              </div>
+            </mat-card-header>
+          </a>
+          <mat-card-actions id="cart_actions_container_{{ product.id }}">
+            <button routerLink="/produto/{{ product.id }}" class="more-button" mat-button>Ver mais</button>
+            <button class="buy-button" mat-button (click)="postCartItem(product.id)" *ngIf="cartId">
+              Carrinho
+              <i class="fas fa-cart-plus fa-lg"></i>
+            </button>
+            <button class="added-button" mat-button>
+              Adicionado
+              <i class="fas fa-cart-plus fa-lg"></i>
+            </button>
+          </mat-card-actions>
+        </mat-card>
+        </div>
+      </div>
+    </div>
+    <div class="aside-container">
+      <div *ngIf="this.authenticationService.isLoggedIn() && wallet">
+        <button class="wallet-button" mat-button #tooltip="matTooltip" matTooltip="CARTEIRA">
+          {{ wallet.funds | currency:'BRL': 'symbol' }}
+        </button>
+      </div>
+      <button id="main-cart-button" routerLink="/carrinho" class="cart-button" mat-button matBadge="{{cartSize}} " matBadgePosition="after">
+        Carrinho
+        <i class="fas fa-shopping-cart fa-lg"></i>
+      </button>
+      <p>Preço (R$)</p>
+      <ngx-slider [formControl]="sliderControl" [value]="minPriceValue" [highValue]="maxPriceValue" [options]="priceOptions"></ngx-slider>
+      <div class="plataform-filter">
+        <mat-form-field [formGroup]="search" appearance="fill">
+          <mat-label>Plataforma </mat-label>
+          <mat-select formControlName="plataforma" >
+            <mat-option value="">Nenhum</mat-option>
+            <mat-option value="1">PS5</mat-option>
+            <mat-option value="2">Xbox Series X</mat-option>
+            <mat-option value="3">PS4</mat-option>
+            <mat-option value="4">Xbox One</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="gender-filter">
+        <mat-form-field [formGroup]="search" appearance="fill">
+          <mat-label>Gênero </mat-label>
+          <mat-select formControlName="genero" >
+            <mat-option value="">Nenhum</mat-option>
+            <mat-option value="1">Ação e aventura</mat-option>
+            <mat-option value="2">FPS</mat-option>
+            <mat-option value="3">Terror</mat-option>
+            <mat-option value="4">RPG</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="publisher-filter">
+        <mat-form-field [formGroup]="search" appearance="fill">
+          <mat-label>Publisher </mat-label>
+          <mat-select formControlName="publisher" >
+            <mat-option value="">Nenhum</mat-option>
+            <mat-option value="1">EA</mat-option>
+            <mat-option value="2">Rockstar Games</mat-option>
+            <mat-option value="3">Bandai Nanco</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="buttons-container">
+        <button mat-button class="main-button" type="button" (click)="enterSearch()">Filtrar</button>
+        <button mat-button class="cancel-button" type="button" (click)="clearFilter()">Limpar fltros</button>
+      </div>
+    </div>
+  </div>
+
+</div>

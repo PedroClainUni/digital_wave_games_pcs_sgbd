@@ -1,0 +1,44 @@
+@import 'variables.scss';
+
+.mat-input-wrapper {
+  background: $gray;
+}
+
+.search {
+  display: flex;
+  align-items: center;
+  margin-left: 60px;
+  margin-right: 60px;
+  width: 30%;
+}
+
+mat-form-field {
+  width: 100%;
+}
+
+::ng-deep .mat-focused .mat-form-field-label {
+  color: $green !important;
+ }
+
+ ::ng-deep.mat-form-field-underline {
+  background-color: $green !important;
+}
+
+::ng-deep.mat-form-field-ripple {
+ background-color: $green !important;
+}
+
+::ng-deep.mat-form-field-flex {
+  background-color: $gray !important;
+  border-radius: 0px !important;
+ }
+
+
+ ::ng-deep.mat-form-field-wrapper {
+  margin-bottom: -1.25em;
+  color: $light-gray;
+ }
+
+ ::ng-deep.mat-form-field-label {
+  color: $light-gray;
+ }

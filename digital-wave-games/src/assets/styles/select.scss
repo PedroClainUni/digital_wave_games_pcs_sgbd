@@ -1,0 +1,9 @@
+@import 'variables.scss';
+
+::ng-deep .mat-select-value-text {
+  color: $light-gray !important;
+}
+
+::ng-deep .mat-option.mat-selected:not(.mat-option-disabled) {
+  color: $green !important;
+}

@@ -1,0 +1,63 @@
+<div class="main" *ngIf="product">
+    <div class="title">
+        <h2>{{ product.nome }} - {{ product.plataforma.name }}</h2>
+    </div>
+    <div class="grid-content">
+        <div class="trailers_container">
+            <div class="container-trailer">
+                <iframe [src]="selectedTrailer | safe"></iframe>
+            </div>
+            <div class="container-extras">
+                <div class="thumb-trailer-container" *ngFor="let id of product.youtubeIds" (click)="selected(id)">
+                    <img src="https://img.youtube.com/vi/{{ id }}/hqdefault.jpg">
+                    <div class="mask">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container-description-price">
+            <div *ngIf="this.authenticationService.isLoggedIn() && wallet" class="button-actions">
+                <button class="wallet-button selected-button" mat-button #tooltip="matTooltip" matTooltip="CARTEIRA" (click)="selected('url')">
+                  {{ wallet.funds | currency:'BRL': 'symbol' }}
+                </button>
+                <button  routerLink="/carrinho" class="cart-button main-button" mat-button matBadge="{{cartSize}}" *ngIf="this.authenticationService.isLoggedIn() && cartId" matBadgePosition="after">
+                  Carrinho
+                  <i class="fas fa-shopping-cart fa-lg"></i>
+                </button>
+              </div>
+            <div class="container-description">
+                <div class="banner-container">
+                    <img src="{{ product.imgUrl }}" alt="Capa do jogo {{ product.nome }}">
+                </div>
+                <div class="description-header">
+                    <h2>História</h2>
+                    <span class="rs" [ngClass]="{'rs10' : product.ratingSystem.name === '10+',
+                    'rs12' : product.ratingSystem.name === '12+',
+                    'rs14' : product.ratingSystem.name === '14+',
+                    'rs16' : product.ratingSystem.name === '16+',
+                    'rs18' : product.ratingSystem.name === '18+',
+                    'rsL' : product.ratingSystem.name === 'L'}"></span>
+                </div>
+                <p>{{ product.descricao }}</p>
+            </div>
+            <div class="container-price">
+                <p>{{ product.preco/100 | currency:'BRL': 'symbol' }}</p>
+                <div class="button-container">
+                    <button class="buy-button main-button" mat-button (click)="postCartproduct(product.id)" *ngIf="this.authenticationService.isLoggedIn() && cartId && !onCart">
+                        Adicionar ao carrinho
+                        <i class="fas fa-cart-plus fa-lg"></i>
+                    </button>
+                    <button class="added-button selected-button" mat-button *ngIf="this.authenticationService.isLoggedIn() && cartId && onCart">
+                        Item no carrinho
+                    </button>
+                    <button class="main-button" mat-button routerLink="/login" *ngIf="!this.authenticationService.isLoggedIn()">
+                        Comprar
+                        <i class="fas fa-cart-plus fa-lg"></i>
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

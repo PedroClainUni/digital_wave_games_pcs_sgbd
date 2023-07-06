@@ -1,0 +1,150 @@
+@import "./../../../assets/styles/variables.scss";
+@import './../../../assets/styles/input.scss';
+
+.login {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  color: $white;
+  margin-top: 120px;
+  margin-bottom: 80px;
+
+  .left-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 500px;
+  }
+
+  .right-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 500px;
+  }
+
+  mat-card {
+    height: 500px;
+    width: 500px;
+    background-color: $dark-gray;
+
+    .social-signin {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 30px;
+
+      img {
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+h2 {
+  font-family: $default-font !important;
+  font-weight: normal;
+  text-transform: uppercase;
+}
+
+.green-button {
+  background-color: $green !important;
+  text-transform: uppercase;
+  font-size: 120%;
+  font-weight: normal;
+  color: $white;
+  padding-bottom: 5px;
+  padding-top: 5px;
+  padding-left: 15px;
+  padding-right: 15px;
+  text-decoration: none;
+
+  .auth-button {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border-radius: 0px;
+
+    mat-icon {
+      margin-right: 10px;
+    }
+  }
+}
+
+lottie-player {
+  width: 350px;
+}
+
+p {
+  text-align: center;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 50px;
+  margin-top: 20px !important;
+
+  mat-form-field {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width: 100%;
+  }
+}
+
+a {
+  width: fit-content;
+}
+
+.login-button {
+  margin-top: 30px;
+}
+
+.ad {
+  color: $light-gray;
+  margin-bottom: 30px;
+  text-transform: uppercase;
+}
+
+.forgot-password {
+  color: $light-gray;
+  margin-top: 70px;
+  font-size: 90%;
+}
+
+lottie-player {
+  height: 400px;
+}
+
+.divider {
+  display: flex;
+  align-items: center;
+  padding: 0 1rem;
+  color: $light-gray;
+  margin-top: 20px;
+}
+
+.divider:before,
+.divider:after {
+  content: "";
+  flex: 0 1 100%;
+  border-bottom: 3px solid $gray;
+  margin: 0 1rem;
+}
+
+.divider:before {
+  margin-left: 0;
+}
+
+.divider:after {
+  margin-right: 0;
+}
+
+.divider[text-position="right"]:after,
+.divider[text-position="left"]:before {
+  content: none;
+}

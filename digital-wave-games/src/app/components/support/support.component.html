@@ -1,0 +1,24 @@
+<div class="main">
+    <div class="form-container">
+        <h1 class="title">Formulário de suporte</h1>
+        <form class="form"[formGroup]="supportFormGroup">
+            <mat-form-field class="reason" appearance="fill">
+                <mat-label>Assunto:</mat-label>
+                <input matInput autocomplete="off">
+            </mat-form-field>
+            <mat-form-field class="selection" appearance="fill">
+                <mat-label>Motivo:</mat-label>
+                <mat-select formControlName="category">
+                    <mat-option value="Reembolso">Reembolso</mat-option>
+                    <mat-option value="Nº de rastreio inválido">Número de rastreio inválido</mat-option>
+                    <mat-option value="Depósito não realizado">Depósito não realizado na carteira</mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field class="text" appearance="fill">
+                <mat-label>Descrição:</mat-label>
+                <textarea rows="15" maxlength="1716" matInput formControlName="message"></textarea>
+            </mat-form-field>
+            <button mat-button (click)="enviarMensagem()">Enviar</button>
+        </form>
+    </div>
+</div>

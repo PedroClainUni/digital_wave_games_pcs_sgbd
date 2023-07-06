@@ -1,0 +1,45 @@
+@import '../../../../../assets/styles/variables.scss';
+
+h1 {
+    color: $light-gray;
+    margin-bottom: 48px;
+}
+.form {
+    display: grid;
+    gap: 36px;
+
+    mat-form-field {
+        width: 100%;
+    }
+
+
+    #form-street-input, #form-addicional-input {
+        grid-column: 1 / span 2;
+    }
+    .action-buttons {
+        grid-column: 1 / span 2;
+        display: flex;
+        width: 100%;
+        justify-content: center;
+        align-items: flex-end;
+        grid-column: 1 / span 2;
+        
+        .main-button {
+            height: 40px !important;
+            min-width: 100px;
+            color: $light-gray !important;
+            background: $green;
+            width: 120px;
+            height: 35px;
+            margin-left: 25px;
+        }
+        
+        .cancel-button {
+            height: 40px;
+            min-width: 100px;
+            border: 2px solid $red;
+            color: $red !important;
+            margin-right: 25px;
+          }
+    }
+}

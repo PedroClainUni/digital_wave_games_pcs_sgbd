@@ -1,0 +1,87 @@
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@use '@angular/material' as mat;
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat.core();
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$digital-wave-games-primary: mat.define-palette(mat.$indigo-palette);
+$digital-wave-games-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+
+// The warn palette is optional (defaults to red).
+$digital-wave-games-warn: mat.define-palette(mat.$red-palette);
+
+// Create the theme object. A theme consists of configurations for individual
+// theming systems such as "color" or "typography".
+$digital-wave-games-theme: mat.define-light-theme((
+  color: (
+    primary: $digital-wave-games-primary,
+    accent: $digital-wave-games-accent,
+    warn: $digital-wave-games-warn,
+  )
+));
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include mat.all-component-themes($digital-wave-games-theme);
+
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; background-color: #131313; }
+
+// Fonts
+
+/* cairo-regular - latin */
+@font-face {
+  font-family: 'Cairo';
+  font-style: normal;
+  font-weight: 400;
+  src: url('./assets/fonts/cairo/cairo-v14-latin-regular.eot'); /* IE9 Compat Modes */
+  src: local(''),
+       url('./assets/fonts/cairo/cairo-v14-latin-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('./assets/fonts/cairo/cairo-v14-latin-regular.woff2') format('woff2'), /* Super Modern Browsers */
+       url('./assets/fonts/cairo/cairo-v14-latin-regular.woff') format('woff'), /* Modern Browsers */
+       url('./assets/fonts/cairo/cairo-v14-latin-regular.ttf') format('truetype'), /* Safari, Android, iOS */
+       url('./assets/fonts/cairo/cairo-v14-latin-regular.svg#Cairo') format('svg'); /* Legacy iOS */
+}
+
+// Imports
+
+@import 'assets/styles/snackbar.scss';
+@import 'assets/styles/variables.scss';
+
+mat-dialog-container{
+  background: $dark-gray!important;
+  border-radius: 5px!important;
+}
+
+.bdrop{
+  backdrop-filter: blur(1px);
+}
+
+.mat-radio-button.mat-accent .mat-radio-ripple .mat-ripple-element {
+opacity: 0 !important; /*click effect color change*/
+background-color: $green !important;  }
+
+.mat-radio-button.mat-accent .mat-radio-inner-circle {
+background-color: $green !important; /*inner circle color change*/  }
+
+.mat-radio-button.mat-accent.mat-radio-checked .mat-radio-outer-circle {
+border-color: $green !important; /*outer ring color change*/  }
+
+
+.mat-body p, .mat-body-1 p, .mat-typography p {
+  margin: 0 !important; /*Re-writing margin from _typography.scss */
+}
+
+.mat-form-field-empty.mat-form-field-label{
+  color: $light-gray;
+}

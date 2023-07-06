@@ -1,0 +1,44 @@
+@import 'variables.scss';
+
+.rs::after {
+    min-width: 50px;
+    min-height: 50px;
+    color: $white;
+    font-weight: 500;
+    padding: .8em;
+    border-radius: .2em;
+}
+
+.rsL::after {
+    padding-right: 1.4em;
+    padding-left: 1.4em;
+    content: "L";
+    background-color: $rsL;
+}
+
+.rs10::after {
+    content: "10+";
+    background-color: $rs10;
+    color: $dark-gray;
+}
+
+.rs12::after {
+    content: "12+";
+    background-color: $rs12;
+    color: $dark-gray;
+}
+
+.rs14::after {
+    content: "14+";
+    background-color: $rs14;
+}
+
+.rs16::after {
+    content: "16+";
+    background-color: $rs16;
+}
+
+.rs18::after {
+    content: "18+";
+    background-color: $rs18;
+}

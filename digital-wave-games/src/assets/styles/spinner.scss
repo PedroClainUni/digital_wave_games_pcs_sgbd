@@ -1,0 +1,5 @@
+@import 'variables.scss';
+
+::ng-deep .mat-progress-spinner circle, .mat-spinner circle {
+  stroke: $green;
+}

@@ -1,0 +1,92 @@
+@import './../../../assets/styles/variables.scss';
+@import './../../../assets/styles/stepper.scss';
+@import './../../../assets/styles/link.scss';
+
+.signup {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-transform: uppercase;
+  color: $white;
+  font-family: $default-font;
+  margin-top: 80px;
+  margin-bottom: 80px;
+
+  .main-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 500px;
+  }
+
+  mat-card {
+    width: 600px;
+    background-color: $dark-gray;
+    font-family: $default-font;
+  }
+
+}
+
+mat-form-field {
+  text-transform: none;
+}
+
+mat-form-field {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+mat-grid-list {
+  margin-top: -10px !important;
+  margin-bottom: -10px !important;
+}
+
+.small-input {
+  width: 150px;
+}
+
+.medium-input {
+  width: 338px;
+}
+
+.full-width-input {
+  width: 525px;
+  margin-left: 12px;
+}
+
+.grid-layout-custom{
+  width: 200px;
+  height: 200px;
+}
+
+button {
+  margin: 40px;
+}
+
+.confirmation {
+  margin-top: 80px;
+}
+
+h3 {
+  margin-top: 30px;
+  margin-left: 12px;
+}
+
+.navigator {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.confirmation-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.code-button {
+  margin: 6px;
+}

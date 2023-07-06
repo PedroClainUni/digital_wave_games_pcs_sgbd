@@ -1,0 +1,89 @@
+<div class="main">
+    <h1 class="title">Edição de produtos</h1>
+    <form auto class="form-container"  [formGroup]="registrationFormGroup" >
+        <div class="form-section-1">
+            <div class="selects-container">
+                <mat-form-field class="ageRating" appearance="fill">
+                    <mat-label>Classificação indicativa:</mat-label>
+                    <mat-select formControlName="ageRating">
+                        <mat-option value="2">L</mat-option>
+                        <mat-option value="3">10+</mat-option>
+                        <mat-option value="4">12+</mat-option>
+                        <mat-option value="1">14+</mat-option>
+                        <mat-option value="5">16+</mat-option>
+                        <mat-option value="6">18+</mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field class="gender" appearance="fill">
+                    <mat-label>Genero:</mat-label>
+                    <mat-select formControlName="gender">
+                        <mat-option value="1">Acao e Aventura</mat-option>
+                        <mat-option value="2">First Person Shooter</mat-option>
+                        <mat-option value="3">Terror</mat-option>
+                        <mat-option value="4">RPG</mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field class="platform" appearance="fill">
+                    <mat-label>Plataforma:</mat-label>
+                    <mat-select formControlName="platform">
+                        <mat-option value="1">PS5</mat-option>
+                        <mat-option value="2">XBOX X</mat-option>
+                        <mat-option value="3">PS4</mat-option>
+                        <mat-option value="4">XBOX ONE</mat-option>
+                        <mat-option value="5">PC</mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field class="publisher" appearance="fill">
+                    <mat-label>Publisher</mat-label>
+                    <mat-select formControlName="publisher">
+                        <mat-option value="1">From Software</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+           <div class="form-img-container">
+            <div class="img-container">
+                <img class="game-image" src={{image}}>
+            </div>
+            <mat-form-field class="image" appearance="fill">
+                <mat-label>Imagem:</mat-label>
+                <input formControlName="image" matInput autocomplete="off" (keyup.enter)="atualizarImagem($event)" placeholder="Image">
+            </mat-form-field>
+           </div>
+        </div>
+       
+       <div class="form-section-2">
+        <mat-form-field class="youtubeIds" appearance="fill">
+            <mat-label>Trailers</mat-label>
+            <input formControlName="youtubeIds" matInput autocomplete="off">
+        </mat-form-field>
+        <mat-form-field class="gameName" appearance="fill">
+            <mat-label color="white">Nome do jogo:</mat-label>
+            <input formControlName="name" matInput autocomplete="off">
+        </mat-form-field>
+        <mat-form-field class="price" appearance="fill">
+            <mat-label>Preço:</mat-label>
+            <input formControlName="price" type="number" min="1" step="any" matInput placeholder="Preço">
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+            <mat-label>Data de Lançamento</mat-label>
+            <input matInput [matDatepicker]="picker" formControlName="releaseDate">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+        <div class="price-amount-container">
+            <mat-form-field class="amount" appearance="fill">
+                <mat-label>Quantidade:</mat-label>
+                <input formControlName="amount" type="number" min="1" matInput placeholder="Quantidade">
+            </mat-form-field>
+        </div>
+        <mat-form-field class="description" appearance="fill">
+            <mat-label>Descrição:</mat-label>
+            <textarea formControlName="description" rows="15" maxlength="1716" matInput></textarea>
+        </mat-form-field>
+       </div>
+       <div class="buttons-container">
+        <button class="cancel-button" type="button" routerLink="/products-management" mat-button>Voltar</button>
+        <button class="main-button" (click)="registerProduct()" mat-button>Editar</button>  
+       </div>      
+    </form>
+</div>

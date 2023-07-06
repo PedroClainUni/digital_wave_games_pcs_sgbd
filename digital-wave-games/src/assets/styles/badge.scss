@@ -1,0 +1,6 @@
+@import 'variables.scss';
+
+::ng-deep .mat-badge-content {
+  color: $dark-gray !important;
+  background: $white !important;
+}

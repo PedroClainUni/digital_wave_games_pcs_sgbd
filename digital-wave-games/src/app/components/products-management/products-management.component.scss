@@ -1,0 +1,50 @@
+@import '../../../assets/styles/variables.scss';
+@import '../../../assets/styles/spinner.scss';
+
+td, th{
+ text-align: center;
+ border-right-style:ridge;
+ border-right-color: $dark-gray;
+}
+.buttons{
+    background-color: $green;
+    color: $white;
+    height: 100%;
+}
+mat-progress-spinner {
+  margin: auto;
+  margin-top: 50px;
+}
+.btnRemove{
+  background: $red;
+  color: $white;
+}
+table{
+    width: 100%;
+    margin-top: 25px;
+    background-color: $dark-gray;
+    .mat-cell, .mat-header-cell{
+        color: $light-gray;
+        font-size: 15px;
+    }
+}
+.main {
+  padding: $padding-page;
+
+  .nav {
+      display: flex;
+      justify-content: space-between;
+      flex-direction: row;
+
+      .search{
+          display: flex;
+          gap: 10px;
+      }
+
+    .title {
+      text-align: center;
+      color: $light-gray;
+      font-size: 35px;
+    }
+  }
+}

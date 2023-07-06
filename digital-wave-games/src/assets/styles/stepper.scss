@@ -1,0 +1,31 @@
+@import 'variables.scss';
+
+::ng-deep .mat-step-header .mat-step-icon-selected {
+  background-color: $green;
+}
+
+::ng-deep .mat-stepper-horizontal {
+  background-color: $dark-gray;
+}
+
+mat-stepper {
+  color: $light-gray;
+  font-family: $default-font;
+}
+
+::ng-deep .mat-step-text-label {
+  color: $light-gray;
+}
+
+::ng-deep .mat-step-icon-state-edit {
+  background-color: $dark-gray !important;
+}
+
+::ng-deep .mat-stepper-horizontal-line {
+  color: $gray;
+  border-top-color: $gray;
+}
+
+::ng-deep .mat-step-optional {
+  color: $alt-gray !important;
+}

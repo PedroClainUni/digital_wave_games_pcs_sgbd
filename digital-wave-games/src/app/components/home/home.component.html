@@ -1,0 +1,32 @@
+<div class="main">
+    <div *ngIf="!products">
+        <mat-progress-spinner mode="indeterminate">
+        </mat-progress-spinner>
+    </div>
+    <h2 *ngIf="products" class="featuredTitle">Jogos novos</h2>
+    <div *ngIf="products" class="featured-games">
+        <div class="numberOne">
+            <a routerLink="/produto/{{products[0].id}}">
+                <img src="https://preview.redd.it/nzf7mlkli5k71.png?auto=webp&s=8ce1103c1231392893235dc8b7524b035dc5c24a">
+            </a>
+        </div>
+        <div class="numberTwo">
+            <a routerLink="/produto/{{products[1].id}}">
+            <img src="https://meialua.net/wp-content/uploads/2022/11/god-of-war-ragnarok-wallpaper-scaled.jpg">
+            </a>
+        </div>
+        <div class="numberThree">
+            <a routerLink="/produto/{{products[2].id}}">
+            <img src="https://meialua.net/wp-content/uploads/2022/11/god-of-war-ragnarok-wallpaper-scaled.jpg">
+            </a>
+        </div>
+    </div>
+    <div *ngFor="let category of categoryCounts" class="category">
+        <h2 class="categoryTitle">{{category}}</h2>
+        <div class="games">
+            <a routerLink="/produto/{{ product.id }}" *ngFor="let product of products">
+                <img src="https://preview.redd.it/nzf7mlkli5k71.png?auto=webp&s=8ce1103c1231392893235dc8b7524b035dc5c24a">
+            </a>
+        </div>
+    </div>
+</div>

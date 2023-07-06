@@ -1,0 +1,41 @@
+@import 'variables.scss';
+
+// Input date type
+
+::ng-deep .mat-form-field:not(.mat-form-field-appearance-legacy) 
+::ng-deep .mat-form-field-suffix .mat-icon-button 
+::ng-deep .mat-datepicker-toggle-default-icon{
+  color: $light-gray;
+}
+::ng-deep .mat-calendar-body-cell:not(.mat-calendar-body-disabled):hover > .mat-calendar-body-cell-content:not(.mat-calendar-body-selected):not(.mat-calendar-body-comparison-identical), 
+::ng-deep .cdk-keyboard-focused .mat-calendar-body-active > .mat-calendar-body-cell-content:not(.mat-calendar-body-selected):not(.mat-calendar-body-comparison-identical), 
+::ng-deep .cdk-program-focused .mat-calendar-body-active > .mat-calendar-body-cell-content:not(.mat-calendar-body-selected):not(.mat-calendar-body-comparison-identical) {
+  background-color: $light-gray;
+}
+
+::ng-deep .mat-calendar-body-selected {
+    background-color: $green;
+}
+
+::ng-deep .mat-calendar-body-today:not(.mat-calendar-body-selected):not(.mat-calendar-body-comparison-identical) {
+    border-color: $green;
+}
+
+::ng-deep input::-webkit-outer-spin-button,
+::ng-deep input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+// Input number type
+
+::ng-deep input[type=number] {
+  -moz-appearance: textfield;
+}
+
+// Auto complete
+
+::ng-deep input { 
+  box-shadow: 0 0 0px 1000px $gray inset;
+  -webkit-text-fill-color: $light-gray !important;
+}

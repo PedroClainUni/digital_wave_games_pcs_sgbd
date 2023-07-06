@@ -1,0 +1,70 @@
+<div class="background_wrapper">
+  <div>
+    <section class="checkout">
+      <div class="wallet">
+        <h1>Finalizar compra</h1>
+        <button class="wallet_button" mat-button #tooltip="matTooltip" matTooltip="CARTEIRA">
+          {{ formatPrice(wallet.funds)}}
+        </button>
+      </div>
+      <main>
+        <div class="payment_type select_container">
+          <h3>Forma de pagamento</h3>
+          <div class="select_buttons">
+            <div class="slip_button select_button" (click)="choicePaymentType(1)"
+              [ngClass]="{'active': paymentType === 1}">
+              <i class="fas fa-barcode"></i><br>
+              <p>Boleto</p>
+            </div>
+            <div class="wallet_button select_button" (click)="choicePaymentType(4)"
+              [ngClass]="{'active': paymentType === 4}">
+              <i class="fas fa-wallet"></i>
+              <p>Carteira</p>
+            </div>
+          </div>
+        </div>
+        <div class="actions select_container">
+          <button class="cancel_button" (click)="cancel()">Cancelar</button>
+          <button class="buy_button" (click)="finishPurshase()">Comprar</button>
+        </div>
+        <div class="adresses select_container">
+          <h3>Endereço</h3>
+          <div class="select_buttons">
+            <div class="address select_button" *ngFor="let address of addressArray" (click)="choiceAddress(address.id)"
+              [ngClass]="{'active': addressId === address.id}">
+              <p>{{address.city}}</p>
+              <p>{{address.street}} - {{address.number}}</p>
+            </div>
+          </div>
+        </div>
+        <div class="price_container select_container">
+          <h4 *ngIf="freight">Frete: R$ {{formatPrice(freight.price)}}</h4>
+          <h2>Total: R$ {{formatPrice(totalPrice)}}</h2>
+        </div>
+        <div class="freights select_container">
+          <h3>Frete</h3>
+          <div class="select_buttons">
+            <div class="freight_1 select_button" (click)="choiceFreight(0)"
+              [ngClass]="{'active': freight && freight.id === 1}">
+              <i class="fas fa-truck"></i>
+              <h4>{{ freights[0].name }}</h4>
+              <p>{{ formatPrice(freights[0].price) }}</p>
+            </div>
+            <div class="freight_2 select_button" (click)="choiceFreight(1)"
+              [ngClass]="{'active': freight && freight.id === 2}">
+              <i class="fas fa-truck"></i>
+              <h4>{{ freights[0].name }}</h4>
+              <p>{{ formatPrice(freights[1].price) }}</p>
+            </div>
+            <div class="freight_1 select_button" (click)="choiceFreight(2)"
+              [ngClass]="{'active': freight && freight.id === 3}">
+              <i class="fas fa-truck"></i>
+              <h4>{{ freights[0].name }}</h4>
+              <p>{{ formatPrice(freights[2].price) }}</p>
+            </div>
+          </div>
+        </div>
+      </main>
+    </section>
+  </div>
+</div>
