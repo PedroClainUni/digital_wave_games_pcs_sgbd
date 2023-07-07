@@ -57,7 +57,7 @@ export class AuthenticationService {
   public loginAdm(dto: AdmLoginDTO): Observable<Jwt> {
     return this.http
       .post<Jwt>(
-        `${environment.baseUrl}/auth/authenticate/admin`,
+        `${environment.baseUrl}/auth/authenticate-admin`,
         dto
       )
       .pipe(

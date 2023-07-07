@@ -1,6 +1,8 @@
 
 import { Platform } from './platform.model'
 export interface Product {
+  success?: boolean;
+  body:{
   id?: number;
   _id?: number;
   nome?: string;
@@ -8,4 +10,5 @@ export interface Product {
   estoque?: number;
   descricao?: string;
   plataforma?: string;
+  }
 }

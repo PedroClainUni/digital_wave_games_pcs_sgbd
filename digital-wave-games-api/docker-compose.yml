@@ -33,36 +33,36 @@ services:
     depends_on:
       - mysql
       - mongodb
-  influxdb:
-    image: influxdb:1.8
-    ports:
-      - "8086:8086"
-    environment:
-      - INFLUXDB_DB=k6
-  grafana:
-    image: grafana/grafana:latest
-    ports:
-      - "3000:3000"
-    environment:
-      - GF_AUTH_ANONYMOUS_ORG_ROLE=Admin
-      - GF_AUTH_ANONYMOUS_ENABLED=true
-      - GF_AUTH_BASIC_ENABLED=false
-      - GF_SERVER_SERVE_FROM_SUB_PATH=true
-    volumes:
-      - ./k6/grafana/dashboards:/var/lib/grafana/dashboards
-      - ./k6/grafana/grafana-dashboard.yaml:/etc/grafana/provisioning/dashboards/dashboard.yaml
-      - ./k6/grafana/grafana-datasource.yaml:/etc/grafana/provisioning/datasources/datasource.yaml
+#  influxdb:
+#    image: influxdb:1.8
+#    ports:
+#      - "8086:8086"
+#    environment:
+#      - INFLUXDB_DB=k6
+#  grafana:
+#    image: grafana/grafana:latest
+#    ports:
+#      - "3000:3000"
+#    environment:
+#      - GF_AUTH_ANONYMOUS_ORG_ROLE=Admin
+#      - GF_AUTH_ANONYMOUS_ENABLED=true
+#      - GF_AUTH_BASIC_ENABLED=false
+#      - GF_SERVER_SERVE_FROM_SUB_PATH=true
+#    volumes:
+#      - ./k6/grafana/dashboards:/var/lib/grafana/dashboards
+#      - ./k6/grafana/grafana-dashboard.yaml:/etc/grafana/provisioning/dashboards/dashboard.yaml
+#      - ./k6/grafana/grafana-datasource.yaml:/etc/grafana/provisioning/datasources/datasource.yaml
 
-  k6:
-    image: loadimpact/k6:latest
-    ports:
-      - "6565:6565"
-    environment:
-      - K6_OUT=influxdb=http://influxdb:8086/k6
-    volumes:
-      - ./k6/scripts:/scripts
-    depends_on:
-      - grafana
-      - influxdb
+#  k6:
+#    image: loadimpact/k6:latest
+#    ports:
+#      - "6565:6565"
+#    environment:
+#      - K6_OUT=influxdb=http://influxdb:8086/k6
+#    volumes:
+#      - ./k6/scripts:/scripts
+#    depends_on:
+#      - grafana
+#      - influxdb
   # ======== EXECUTAR PELO TERMINAL É MELHOR=========
   #   command: run /scripts/demo.js

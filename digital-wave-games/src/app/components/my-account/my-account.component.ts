@@ -9,7 +9,7 @@ import { OrderService } from 'src/app/shared/services/order.service';
 import { Order } from 'src/app/shared/models/order.model';
 import { OrderItem } from 'src/app/shared/models/orderItem.model';
 import { ProductService } from 'src/app/shared/services/product.service';
-import { Product } from 'src/app/shared/models/product/product.model';
+import { Product } from 'src/app/shared/models/product/product.modelnew';
 import * as moment from 'moment';
 
 @Component({
@@ -38,20 +38,20 @@ export class MyAccountComponent implements OnInit {
         this.orderService.getOrderItems(order.id).subscribe(orderItems => {
           for (let orderItem of orderItems) {
             let productView: ProductView;
-            this.productService.getProduct(orderItem.productId).subscribe(product => {
+           /* this.productService.getProduct(orderItem.productId).subscribe(product => {
               productView = {
-                id: product.id,
-                imgUrl: product.imgUrl,
-                name: product.nome,
+                id: product.body.id,
+                //imgUrl: product.imgUrl,
+                name: product.body.nome,
               }
               orderItemView.push({
                 id: orderItem.id,
                 amount: orderItem.amount,
-                imgUrl: productView.imgUrl,
+                //imgUrl: productView.imgUrl,
                 productName: productView.name,
                 productPrice: orderItem.unitPrice
               })
-            })
+            })*/
           }
           this.orders.push({
             id: order.id,
@@ -116,12 +116,12 @@ interface OrderItemView {
   id: number;
   productName: string;
   productPrice: number;
-  imgUrl: string;
+  //imgUrl: string;
   amount: number;
 }
 
 interface ProductView {
   id: number;
   name: string;
-  imgUrl: string;
+  //imgUrl: string;
 }

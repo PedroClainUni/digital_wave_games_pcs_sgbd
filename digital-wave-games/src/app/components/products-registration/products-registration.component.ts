@@ -32,13 +32,8 @@ export class ProductsRegistrationComponent implements OnInit {
       price: ['', Validators.required],
       amount: ['', Validators.required],
       description: ['', Validators.required],
-      image: ['', Validators.required],
-      youtubeIds: [''],
-      releaseDate: ['', Validators.required],
-      ageRating: ['', Validators.required],
-      platform: ['', Validators.required],
-      gender: ['', Validators.required],
-      publisher: ['', Validators.required]
+     // image: ['', Validators.required],
+      platform: ['', Validators.required]
     });
   }
 
@@ -49,21 +44,17 @@ export class ProductsRegistrationComponent implements OnInit {
   public registerProduct(): void {
     if(this.isFormValid()){
       const dto = {
-        name: this.registrationFormGroup.controls['name'].value,
-        price: this.registrationFormGroup.controls['price'].value * 100,
-        amount: this.registrationFormGroup.controls['amount'].value,
-        description: this.registrationFormGroup.controls['description'].value,
-        releaseDate: moment(this.registrationFormGroup.controls['releaseDate'].value).format('YYYY-MM-DD'),
-        ratingSystemId: this.registrationFormGroup.controls['ageRating'].value,
-        imgUrl: this.registrationFormGroup.controls['image'].value,
-        youtubeIds: this.registrationFormGroup.controls['youtubeIds'].value.split(','),
-        platformId: this.registrationFormGroup.controls['platform'].value,
-        genderId: this.registrationFormGroup.controls['gender'].value,
-        publisherId: this.registrationFormGroup.controls['publisher'].value,
+        nome: this.registrationFormGroup.controls['name'].value,
+        preco: this.registrationFormGroup.controls['price'].value,
+        estoque: this.registrationFormGroup.controls['amount'].value,
+        descricao: this.registrationFormGroup.controls['description'].value,
+        //imgUrl: this.registrationFormGroup.controls['image'].value,
+        plataforma: this.registrationFormGroup.controls['platform'].value,
       }
       this.productService.postProduct(dto);
+      console.log(dto)
       this.notificationService.success('Produto adicionado com sucesso!')
-      this.clearFields();
+      //this.clearFields();
     } else {
       this.notificationService.error('Preencha todos os campos obrigatórios.')
     }
@@ -76,25 +67,15 @@ export class ProductsRegistrationComponent implements OnInit {
         this.registrationFormGroup.controls['price'].setValue('')
         this.registrationFormGroup.controls['amount'].setValue('')
         this.registrationFormGroup.controls['name'].setValue('')
-        this.registrationFormGroup.controls['ageRating'].setValue('')
         this.registrationFormGroup.controls['platform'].setValue('')
-        this.registrationFormGroup.controls['gender'].setValue('')
-        this.registrationFormGroup.controls['publisher'].setValue('')
-        this.registrationFormGroup.controls['releaseDate'].setValue('');
         this.registrationFormGroup.controls['description'].setValue('');
-        this.registrationFormGroup.controls['image'].setValue('');
-        this.registrationFormGroup.controls['youtubeIds'].setValue('');
+       // this.registrationFormGroup.controls['image'].setValue('');
         this.registrationFormGroup.controls['price'].setErrors(null);
         this.registrationFormGroup.controls['amount'].setErrors(null);
         this.registrationFormGroup.controls['name'].setErrors(null);
-        this.registrationFormGroup.controls['ageRating'].setErrors(null);
         this.registrationFormGroup.controls['platform'].setErrors(null);
-        this.registrationFormGroup.controls['gender'].setErrors(null);
-        this.registrationFormGroup.controls['publisher'].setErrors(null);
-        this.registrationFormGroup.controls['releaseDate'].setErrors(null);
         this.registrationFormGroup.controls['description'].setErrors(null);
-        this.registrationFormGroup.controls['image'].setErrors(null);
-        this.registrationFormGroup.controls['youtubeIds'].setErrors(null);
-        this.image = "../../../assets/images/ImageField.png";
+        //this.registrationFormGroup.controls['image'].setErrors(null);
+       // this.image = "../../../assets/images/ImageField.png";
   }
 }

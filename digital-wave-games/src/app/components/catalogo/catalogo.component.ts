@@ -138,8 +138,6 @@ export class CatalogoComponent implements OnInit, AfterViewInit {
   clearFilter() {
     this.search.get('searchBar').setValue('');
     this.search.get('plataforma').setValue('');
-    this.search.get('genero').setValue('');
-    this.search.get('publisher').setValue('');
     this.sliderControl.value[0] = this.minPriceValue;
     this.sliderControl.value[1] = this.maxPriceValue;
     this.enterSearch();
@@ -159,17 +157,18 @@ export class CatalogoComponent implements OnInit, AfterViewInit {
         break;
       }
       case "rising-price":{
-        products.sort((a,b)=>{
-          let priceOne = a.price;
-          let priceTwo = b.price;
+        products.body.sort((a,b)=>{
+          console.log(a.preco)
+          let priceOne = a.preco;
+          let priceTwo = b.preco;
           return priceOne - priceTwo;
         });
         break;
       }
       case "decreasing-price":{
-        products.sort((a,b)=>{
-          let priceOne = a.price;
-          let priceTwo = b.price;
+        products.body.sort((a,b)=>{
+          let priceOne = a.preco;
+          let priceTwo = b.preco;
           return priceTwo - priceOne;
         });
         break;

@@ -29,21 +29,21 @@
                 <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by string">
                     Nome
                 </th>
-                <td mat-cell *matCellDef="let product"> {{product.name}} </td>
+                <td mat-cell *matCellDef="let product"> {{product.nome}} </td>
             </ng-container>
 
             <ng-container matColumnDef="price">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by number">
                     Preço
                 </th>
-                <td mat-cell *matCellDef="let product"> {{product.price / 100 | currency:'BRL':true}} </td>
+                <td mat-cell *matCellDef="let product"> {{product.preco | currency:'BRL':true}} </td>
             </ng-container>
 
             <ng-container matColumnDef="amount">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by number">
                     Estoque
                 </th>
-                <td mat-cell *matCellDef="let product"> {{product.amount}} </td>
+                <td mat-cell *matCellDef="let product"> {{product.estoque}} </td>
             </ng-container>
 
             <ng-container matColumnDef="releaseDate">
@@ -53,18 +53,11 @@
                 <td mat-cell *matCellDef="let product"> {{product.releaseDate | date:'dd/MM/YYYY'}} </td>
             </ng-container>
 
-            <ng-container matColumnDef="publisher">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by string">
-                    Publisher
-                </th>
-                <td mat-cell *matCellDef="let product"> {{product.publisher.name}} </td>
-            </ng-container>
-
             <ng-container matColumnDef="platform">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by string">
                     Plataforma
                 </th>
-                <td mat-cell *matCellDef="let product"> {{product.platform.name}} </td>
+                <td mat-cell *matCellDef="let product"> {{product.plataforma}} </td>
             </ng-container>
 
             <ng-container matColumnDef="gender">

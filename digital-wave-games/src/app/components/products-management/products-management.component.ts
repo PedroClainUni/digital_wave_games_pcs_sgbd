@@ -3,7 +3,7 @@ import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { MatSort, Sort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { filter } from 'rxjs';
-import { Product } from 'src/app/shared/models/product/product.model';
+import { Product } from 'src/app/shared/models/product/product.modelnew';
 import { NotificationService } from 'src/app/shared/services/notification.service';
 import { ProductService } from 'src/app/shared/services/product.service';
 
@@ -17,7 +17,7 @@ export class ProductsManagementComponent implements OnInit, AfterViewInit {
   public searchName;
   products: Product[] = [];
   filterProducts: Product[];
-  displayedColumns: string[] = ['id', 'name', 'price', 'amount', 'releaseDate', 'gender', 'publisher', 'platform', 'ratingSystem', 'remove', 'edit']
+  displayedColumns: string[] = ['id', 'name', 'price', 'amount', 'platform', 'remove', 'edit']
   dataSource = new MatTableDataSource([]);
 
   constructor(private _liveAnnouncer: LiveAnnouncer,
@@ -75,28 +75,12 @@ export class ProductsManagementComponent implements OnInit, AfterViewInit {
     this.productService.getProducts().subscribe(response => {
       response.body.forEach(item => {
         const product: Product = {
-          id: item.id,
+          id: item._id,
           nome: item.nome,
           descricao: item.descricao,
           estoque: item.estoque,
           preco: item.preco,
-          releaseDate: item.releaseDate,
-          gender: {
-            id: item.gender.id,
-            name: item.gender.name
-          },
-          plataforma: {
-            id: item.plataforma.id,
-            name: item.plataforma.name
-          },
-          publisher: {
-            id: item.publisher.id,
-            name: item.publisher.name
-          },
-          ratingSystem: {
-            id: item.ratingSystem.id,
-            name: item.ratingSystem.name
-          }
+          plataforma: item.plataforma
         }
         products.push(product);
       })
@@ -119,12 +103,12 @@ export class ProductsManagementComponent implements OnInit, AfterViewInit {
   formatDate(date: Date) {
     return date.toLocaleDateString('pt-BR');
   }
-  remove(id: number) {
-    this.removeFromArray(id);
-
+  remove(id: string) {
+  
     this.productService.deleteProduct(id);
     this.dataSource = new MatTableDataSource(this.filterProducts);
     this.notificationService.success("Produto removido com successo");
+    this.reloadTable(this.getProducts());
   }
 
   removeFromArray(id: number) {

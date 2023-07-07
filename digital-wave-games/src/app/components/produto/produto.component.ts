@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { ProductService } from '../../shared/services/product.service';
 import { AuthenticationService } from '../../shared/services/authentication.service';
-import { Product } from '../../shared/models/product/product.model';
+import { Product } from '../../shared/models/product/product.modelnew';
 import { Wallet } from '../../shared/models/wallet.model';
 import { WalletService } from '../../shared/services/wallet.service';
 import { CartService } from 'src/app/shared/services/cart.service';
@@ -26,50 +26,33 @@ export class ProdutoComponent implements OnInit {
   ngOnInit(): void {
   this.cartId = parseInt(this.authenticationService.getCartId());
   this.getProduct();
-  this.defineCart();
+  //this.defineCart();
 
-  this.walletService.getWallet(this.authenticationService.getUsername()).subscribe((wallet: Wallet) => {
+  /*this.walletService.getWallet(this.authenticationService.getUsername()).subscribe((wallet: Wallet) => {
     this.wallet = wallet;
     this.wallet.funds = this.wallet.funds / 100;
-  });
-
+  });*/
   }
 
   getProduct() {
     let id;
     this.router.paramMap.subscribe((param) => {
-      id = parseInt(param.get('produto'))
+      id = param.get('produto')
     });
     this.productService.getProduct(id).subscribe((product) => {
+      console.log(product)
       this.product = {
-        id: product.id,
-        nome: product.nome,
-        descricao: product.descricao,
-        estoque: product.estoque,
-        preco: product.preco,
-        releaseDate: product.releaseDate,
-        imgUrl: product.imgUrl,
-        youtubeIds: product.youtubeIds,
-        gender: {
-          id: product.gender.id,
-          name: product.gender.name
-        },
-        plataforma: {
-          id: product.plataforma.id,
-          name: product.plataforma.name
-        },
-        publisher: {
-          id: product.publisher.id,
-          name: product.publisher.name
-        },
-        ratingSystem: {
-          id: product.ratingSystem.id,
-          name: product.ratingSystem.name
-        }
+        id: product.body._id,
+        nome: product.body.nome,
+        descricao: product.body.descricao,
+        estoque: product.body.estoque,
+        preco: product.body.preco,
+        plataforma: product.body.plataforma
       }
-      this.defineCart();
-      this.selectedTrailer = product.youtubeIds.length !== 0 ? `https://www.youtube.com/embed/${product.youtubeIds[0]}` : null;
+      //this.defineCart();
+      this.selectedTrailer = "https://www.youtube.com/embed/FyIwEFXOcaE";
     });
+    console.log(this.product);
   }
 
   defineCart() {

@@ -1,5 +1,5 @@
 export interface PutProductDTO {
-    id?: number;
+    _id?: number;
     nome?: string;
     preco?: number;
     estoque?: number;

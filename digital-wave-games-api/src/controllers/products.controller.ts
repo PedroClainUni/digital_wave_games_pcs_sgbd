@@ -38,19 +38,20 @@ export class ProductsController {
 
     async save(request: Request, response: Response): Promise<Response> {
         const {
-            name,
-            price,
-            description,
-            amount,
-            platform,
+            nome,
+            preco,
+            descricao,
+            estoque,
+            plataforma,
         } = request.body;
+        if(request.body != undefined){
         try {
             const result = await this.productsService.savem({
-                name: name,
-                price: price,
-                description: description,
-                amount: amount,
-                platform: platform,
+                nome: nome,
+                preco: preco,
+                descricao: descricao,
+                estoque: estoque,
+                plataforma: plataforma,
             });
             return response.send(result);
 
@@ -60,48 +61,55 @@ export class ProductsController {
             })
         }
     }
+    else{
+        return response.status(400).json({
+            message: 'Unexpected error.'
+        })
+    }
+    }
 
-    // async put(request: Request, response: Response): Promise<Response> {
-    //     const {
-    //         id,
-    //         nome,
-    //         preco,
-    //         descricao,
-    //         estoque,
-    //         plataforma,
-    //     } = request.body;
-    //     try {
-    //         const result = await this.productsService.update({
-    //             id: id,
-    //             nome: nome,
-    //             preco: preco,
-    //             descricao: descricao,
-    //             estoque: estoque,
-    //             plataforma: plataforma,
-    //         });
-    //         return response.send(result);
+     async put(request: Request, response: Response): Promise<Response> {
+         const {
+             id,
+             nome,
+             preco,
+             descricao,
+             estoque,
+             plataforma,
+         } = request.body;
+         try {
+             const result = await this.productsService.update({
+                 _id: id,
+                 nome: nome,
+                 preco: preco,
+                 descricao: descricao,
+                 estoque: estoque,
+                 plataforma: plataforma,
+             });
+             return response.send(result);
 
-    //     } catch (error: any) {
-    //         return response.status(400).json({
-    //             message: error.message || 'Unexpected error.'
-    //         })
-    //     }
+         } catch (error: any) {
+             return response.status(400).json({
+                 message: error.message || 'Unexpected error.'
+             })
+         }
 
 
-    // }
+     }
 
-    // async delete(request: Request, response: Response): Promise<Response> {
-    //     try {
-    //         const result = await this.productsService.delete(Number(request.params.id));
-    //         return response.send(result);
+     async delete(request: Request, response: Response): Promise<Response> {
+         try {
+            const id = request.params.id
+            const result = await this.productsService.deleteM(id);
+            return response.send(result);
 
-    //     } catch (error: any) {
-    //         return response.status(400).json({
-    //             message: error.message || 'Unexpected error.'
-    //         })
-    //     }
+         } catch (error: any) {
+             return response.status(400).json({
+                 message: error.message || 'Unexpected error.'
+             })
+         }
 
-    // }
+     }
 /*
     async buyProduct(request: Request, response: Response): Promise<Response> {
         try {

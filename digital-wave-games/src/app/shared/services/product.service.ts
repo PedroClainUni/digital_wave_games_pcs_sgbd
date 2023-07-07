@@ -1,4 +1,4 @@
-import { Product } from '../models/product/product.model';
+import { Product } from '../models/product/product.modelnewdata';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../environments/environment';
@@ -22,7 +22,7 @@ export class ProductService {
     return this.http.get<ApiResponse<Product[]>>(`${environment.baseUrl}/store/products`);
   }
 
-  getProduct(productId: number): Observable<Product> {
+  getProduct(productId: string): Observable<Product> {
     return this.http.get<Product>(`${environment.baseUrl}/store/product/${productId}`);
   }
 
@@ -34,7 +34,7 @@ export class ProductService {
     this.http.put<void>(`${environment.baseUrl}/store/product`, dto).subscribe();
   }
 
-  deleteProduct(productId: number): void {
+  deleteProduct(productId: string): void {
     this.http.delete<void>(`${environment.baseUrl}/store/product/${productId}`).subscribe();
   }
 }

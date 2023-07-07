@@ -15,12 +15,12 @@ router.get('/product/:id', (request, response) => {
 router.post('/product', (request, response) => {
     return productsController.save(request, response);
 });
-// router.put('/product', (request, response) => {
-//     return productsController.put(request, response);
-// });
-// router.delete('/product/:id', (request, response) => {
-//     return productsController.delete(request, response);
-// });
+ router.put('/product', (request, response) => {
+     return productsController.put(request, response);
+ });
+ router.delete('/product/:id', (request, response) => {
+    return productsController.delete(request, response);
+ });
 /*
 router.put('/product/:id', (request, response) => {
     return productsController.buyProduct(request, response);

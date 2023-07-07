@@ -2,20 +2,20 @@ import mongoose, { Schema, Model, Document} from "mongoose";
 
 export interface IProduct{
     _id?: string;
-    name?: string;
-    price?: number;
-    amount?: number;
-    description?: string;
-    platform?: string;
+    nome?: string;
+    preco?: number;
+    estoque?: number;
+    descricao?: string;
+    plataforma?: string;
 }
 
 
 const ProductSchema: Schema = new mongoose.Schema({
-    name: String,
-    price: Number,
-    amount: Number,
-    description: String,
-    platform: String,
+    nome: String,
+    preco: Number,
+    estoque: Number,
+    descricao: String,
+    plataforma: String,
 });
 interface ProductModel extends Omit<IProduct, '_id'>, Document{}
 export const ProductM: Model<ProductModel> = mongoose.model<ProductModel>("Produto", ProductSchema);

@@ -47,23 +47,23 @@ export class CartComponent implements OnInit {
     this.cartId = this.authenticationService.getCartId();
     this.cartService.getCartItems(this.cartId).subscribe((cartItems) => {
       for (let i = 0; i< cartItems.length; i++) {
-        this.productService.getProduct(cartItems[i].productId).subscribe((product) => {
+       /* this.productService.getProduct(cartItems[i].productId).subscribe((product) => {
           this.cartProducts.set(cartItems[i].id, {
             cartItemId: cartItems[i].id,
             index: i,
-            id: product.id,
-            name: product.nome,
-            description: product.descricao,
-            price: product.preco,
-            imgUrl: product.imgUrl,
-            formatPrice: this.formatPrice(product.preco/100),
+            id: product.body._id,
+            name: product.body.nome,
+            description: product.body.descricao,
+            price: product.body.preco,
+            //imgUrl: product.imgUrl,
+            formatPrice: this.formatPrice(product.body.preco/100),
             amount: cartItems[i].amount,
-            formatTotalPrice: this.formatPrice(product.preco/100 * cartItems[i].amount),
-            totalPrice: product.preco * cartItems[i].amount
+            formatTotalPrice: this.formatPrice(product.body.preco/100 * cartItems[i].amount),
+            totalPrice: product.body.preco * cartItems[i].amount
           })
           this.updateTotal();
         })
-
+*/
       }
     });
 

@@ -3,64 +3,32 @@
     <form auto class="form-container"  [formGroup]="registrationFormGroup" >
         <div class="form-section-1">
             <div class="selects-container">
-                <mat-form-field class="ageRating" appearance="fill">
-                    <mat-label>Classificação indicativa:</mat-label>
-                    <mat-select formControlName="ageRating">
-                        <mat-option value="2">L</mat-option>
-                        <mat-option value="3">10+</mat-option>
-                        <mat-option value="4">12+</mat-option>
-                        <mat-option value="1">14+</mat-option>
-                        <mat-option value="5">16+</mat-option>
-                        <mat-option value="6">18+</mat-option>
-                    </mat-select>
-                </mat-form-field>
-                <mat-form-field class="gender" appearance="fill">
-                    <mat-label>Genero:</mat-label>
-                    <mat-select formControlName="gender">
-                        <mat-option value="1">Acao e Aventura</mat-option>
-                        <mat-option value="2">First Person Shooter (FPS)</mat-option>
-                    </mat-select>
-                </mat-form-field>
                 <mat-form-field class="platform" appearance="fill">
                     <mat-label>Plataforma:</mat-label>
                     <mat-select formControlName="platform">
-                        <mat-option value="1">PS5</mat-option>
-                    </mat-select>
-                </mat-form-field>
-                <mat-form-field class="publisher" appearance="fill">
-                    <mat-label>Publisher</mat-label>
-                    <mat-select formControlName="publisher">
-                        <mat-option value="1">From Software</mat-option>
+                        <mat-option value="Play Station 5">PS5</mat-option>
+                        <mat-option value="Nintendo Switch">Nintendo Switch</mat-option>
+                        <mat-option value="Xbox Series S/X">Xbox Series S/X</mat-option>
+                        <mat-option value="Xbox One">Xbox One</mat-option>
                     </mat-select>
                 </mat-form-field>
             </div>
-           <div class="form-img-container">
+           <!--<div class="form-img-container">
             <div class="img-container">
                 <img class="game-image" src={{image}}>
             </div>
             <mat-form-field class="image" appearance="fill">
                 <mat-label>Imagem:</mat-label>
-                <input formControlName="image" matInput autocomplete="off" (keyup.enter)="atualizarImagem($event)">
+                <input formControlName="image" matInput autocomplete="off" (keyup.enter)="atualizarImagem($event)" placeholder="Image">
             </mat-form-field>
-           </div>
+           </div>-->
         </div>
        
        <div class="form-section-2">
-        <mat-form-field class="youtubeIds" appearance="fill">
-            <mat-label>Trailers</mat-label>
-            <input formControlName="youtubeIds" matInput autocomplete="off">
-            <mat-hint align="end"><strong>Adicione os ids do youtube separados por ,</strong></mat-hint>
-        </mat-form-field>
         <mat-form-field class="gameName" appearance="fill">
             <mat-label color="white">Nome do jogo:</mat-label>
             <input formControlName="name" matInput autocomplete="off">
         </mat-form-field>
-        <mat-form-field appearance="fill">
-            <mat-label>Data de Lançamento</mat-label>
-            <input matInput [matDatepicker]="picker" formControlName="releaseDate">
-            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-            <mat-datepicker #picker></mat-datepicker>
-          </mat-form-field>
         <div class="price-amount-container">
             <mat-form-field class="amount" appearance="fill">
                 <mat-label>Quantidade:</mat-label>
